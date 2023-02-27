@@ -10,6 +10,7 @@ const helmet= require('helmet')
 const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv')
 const mongoose = require("mongoose");
+const multer = require("multer")
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());

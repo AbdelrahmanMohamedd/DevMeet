@@ -1,5 +1,6 @@
 const Post= require('../Models/postAuth')
 const User= require("../Models/userAuthModel");
+//CREATE POST
 const createPost = async (req, res) => {
 try{
     const { userId, description, picturePath } = req.body;
@@ -23,6 +24,43 @@ try{
 catch(err){
     res.status(409).json({ message: err.message });
 }
+};
+const updatePost = async (req, res) => {
+  const {id} = req.params
+  const { userId, desc} = req.body;
+  console.log(desc)
+  try {
+    const post = await Post.findById(id);
+    console.log(post)
+    if (post.userId == userId) {
+      console.log("true")
+      post.description=desc
+      await post.save();
+      res.status(200).json("Post Updated");
+    } else {
+      res.status(403).json("Action forbidden");
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+//DELETE POST
+ const deletePost = async (req, res) => {
+  const id = req.params.id;
+  const { userId } = req.body;
+
+  try {
+    const post = await Post.findById(id);
+    console.log(post)
+    if (post.userId == userId) {
+      await post.deleteOne();
+      res.status(200).json("Post deleted successfully");
+    } else {
+      res.status(403).json("Action forbidden");
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
 };
 
 /* READ */
@@ -135,4 +173,4 @@ const postComments = async (req,res)=>{
 
 
 
-module.exports= {createPost, getFeedPosts, getUserPosts, likePost, getFollowPosts, postComments};
+module.exports= {createPost, getFeedPosts, getUserPosts, likePost, getFollowPosts, postComments, deletePost, updatePost};
