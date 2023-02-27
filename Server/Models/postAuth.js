@@ -1,20 +1,15 @@
 const mongoose = require("mongoose");
 
-const DB_URL = "mongodb://127.0.0.1:27017/DevMeet"
-
-mongoose.set('strictQuery', false);
-mongoose.connect(DB_URL, {useNewUrlParser:true});
-
-var postsSchema = new mongoose.Schema({
+var postsSchema = mongoose.Schema({
  userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
+    firstname: {
       type: String,
       required: true,
     },
-    firstName: {
-      type: String,
-      required: true,
-    },
-    lastName: {
+    lastname: {
       type: String,
       required: true,
     },
@@ -35,11 +30,27 @@ var postsSchema = new mongoose.Schema({
       of: Boolean,
     },
     comments: {
-      type: Array,
+      type: [ {
+                              userId:{
+                                        type:mongoose.Schema.ObjectId,
+                                        required:true
+                              },
+                              firstname:{
+                                        type:String,
+                                        required:true
+                              },
+                              lastname:{
+                                        type:String
+                              },
+                              desc:{
+                                        type:String,
+                                        required:true
+                              }
+                    }],
       default: [],
     },
 },
 {timestamps:true}
 )
 
-mongoose.exports = mongoose.model("DevMeetPosts", postSchema);
+module.exports = mongoose.model("DevMeetPosts", postsSchema);

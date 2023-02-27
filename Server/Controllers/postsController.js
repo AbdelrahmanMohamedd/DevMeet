@@ -1,24 +1,28 @@
+const Post= require('../Models/postAuth')
+const User= require("../Models/userAuthModel");
 const createPost = async (req, res) => {
-  try {
+try{
     const { userId, description, picturePath } = req.body;
     const user = await User.findById(userId);
-    const newPost = new Post({
-      userId,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      description,
-      userPicturePath: user.userPicturePath,
-      picturePath,
-      likes: {},
-      comments: [],
-    });
+    
+ PostObj={
+    userId,
+    firstname: user.firstname,
+    lastname: user.lastname,
+    description,
+    picturePath,
+    userPicturePath: user.profilePicture,
+    likes: {},
+  }
+    const newPost = new Post(PostObj);
     await newPost.save();
 
     const post = await Post.find();
     res.status(201).json(post);
-  } catch (err) {
+}
+catch(err){
     res.status(409).json({ message: err.message });
-  }
+}
 };
 
 /* READ */
@@ -66,6 +70,60 @@ const likePost = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+//READ
+const getFollowPosts = async (req, res)=>{
+ const {userId}=req.params
+  try {
+    const currentUserPosts = await Post.find({ userId: userId });
+    const followingPosts = await User.aggregate([
+      {
+        $match: {
+          _id: new mongoose.Types.ObjectId(userId),
+        },
+      },
+      {
+        $lookup: {
+          from: "posts",
+          localField: "following",
+          foreignField: "userId",
+          as: "followingPosts",
+        },
+      },
+      {
+        $project: {
+          followingPosts: 1,
+          _id: 0,
+        },
+      },
+    ]);
+
+    res
+      .status(200)
+      .json(currentUserPosts.concat(...followingPosts[0].followingPosts) //combine owner posts with following posts
+      .sort((a,b)=>{
+          return b.createdAt - a.createdAt; //sort by date in descending
+      })
+      );
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+//POST
+const postComments = async (req,res)=>{
+ const {userId} = req.params
+  const {desc , postid } = req.body;
+  const foundUser= User.findById(userId)
+            const comments={
+                  userId,
+                  firstname:foundUser.firstName,
+                  lastname:foundUser.lastName,
+                  desc,
+            }
+            const post = await Post.findById(postid);
+            post.comments.push(comments);
+            await post.save();
+            res.status(200).json(post);
+}
 
 
 
@@ -77,5 +135,4 @@ const likePost = async (req, res) => {
 
 
 
-
-module.exports= {createPost, getFeedPosts, getUserPosts, likePost};
+module.exports= {createPost, getFeedPosts, getUserPosts, likePost, getFollowPosts, postComments};

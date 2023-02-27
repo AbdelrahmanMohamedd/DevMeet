@@ -9,6 +9,7 @@ const morgan = require('morgan')
 const helmet= require('helmet')
 const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv')
+const mongoose = require("mongoose");
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
@@ -41,5 +42,8 @@ app.get("/home",Auth.requireAuth,(req,res)=>{
 //     res.setHeader('Set-Cookie', "newuser=true") // old way to store cookie
 //     res.cookie('newuser', false, {maxAge: 1000* 60 * 60 * 24, secure:true})  //new way to set cookie with cookie parser
 //  })
+const DB_URL = "mongodb://127.0.0.1:27017/DevMeet"
+mongoose.set('strictQuery', false);
+mongoose.connect(DB_URL, {useNewUrlParser:true});
+
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)});
-//this is a test commit

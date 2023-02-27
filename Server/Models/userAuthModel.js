@@ -6,10 +6,7 @@ const app = express();
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 
-const DB_URL = "mongodb://127.0.0.1:27017/DevMeet"
 
-mongoose.set('strictQuery', false);
-mongoose.connect(DB_URL, {useNewUrlParser:true});
 const maxAge = 3*24*60*60
 
 var usersSchema=new mongoose.Schema({
