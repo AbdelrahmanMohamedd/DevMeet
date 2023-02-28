@@ -37,5 +37,36 @@ app.get("/home",Auth.requireAuth,(req,res)=>{
 //     res.setHeader('Set-Cookie', "newuser=true") // old way to store cookie
 //     res.cookie('newuser', false, {maxAge: 1000* 60 * 60 * 24, secure:true})  //new way to set cookie with cookie parser
 //  })
+
+
+
+//////////////////////////////////////////////
+//////////////////////////////////////////////     
+//////////////////////////////////////////////
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const zoomMeetingRoutes = require('./Routes/zoomMeetingRoutes');
+
+dotenv.config();
+
+const MONGODB_URI = "mongodb://127.0.0.1:27017/DevMeet"
+// Connect to MongoDB
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
+// Middleware
+app.use(express.json());
+
+// Routes
+app.use('/api/zoom-meetings', zoomMeetingRoutes);
+
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+
+
+
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)});
 //this is a test commit
