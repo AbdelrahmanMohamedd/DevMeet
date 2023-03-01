@@ -27,11 +27,19 @@ var usersSchema=new mongoose.Schema({
   default:""
  },
  followers:{
-  type:Array,
+  type:[mongoose.Schema.Types.ObjectId],
+  default:[]
+ },
+ Communities:{
+  type:[mongoose.Schema.Types.ObjectId],
+  default:[]
+ },
+ Meetups:{
+  type:[mongoose.Schema.Types.ObjectId],
   default:[]
  },
   following:{
-  type:Array,
+  type:[mongoose.Schema.Types.ObjectId],
   default:[]
  },
  desc:{
@@ -43,7 +51,25 @@ var usersSchema=new mongoose.Schema({
   type:String,
   max:20,
   default: ""
- }
+ },
+  likes:{
+  type:Number,
+  default: 0
+ },
+  Badge5likes:{
+  type:Boolean,
+  default:false
+ },
+  Badge10likes:{
+  type:Boolean,
+  default:false
+ },
+mentoring:{
+ type:Array
+},
+mentoredBy:{
+ type:Array
+}
 
 },
 {timestamps:true}

@@ -24,10 +24,11 @@ var authRoutes = require("./Routes/authRoutes");
 var Auth = require('./MiddleWares/authMW')
 const userRoutes = require('./Routes/userRoutes')
 const postRoutes= require('./Routes/postRoutes')
+const commentRoutes = require('./Routes/commentRoutes')
 app.use(authRoutes);
 app.use(userRoutes);
 app.use(postRoutes);
-
+app.use(commentRoutes)
 // app.get('*', Auth.checkUser);
 
 app.get("/",(req,res)=>{

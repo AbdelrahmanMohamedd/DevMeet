@@ -1,5 +1,7 @@
 const Post= require('../Models/postAuth')
 const User= require("../Models/userAuthModel");
+const Comment= require("../Models/commentsModel");
+const mongoose = require("mongoose");
 //CREATE POST
 const createPost = async (req, res) => {
 try{
@@ -89,17 +91,54 @@ const likePost = async (req, res) => {
     const { id } = req.params;
     const { userId } = req.body;
     const post = await Post.findById(id);
+    const Poster = await User.findById(post.userId)
     const isLiked = post.likes.get(userId);
-
+//Check if liked
     if (isLiked) {
       post.likes.delete(userId);
+      Poster.likes--
     } else {
       post.likes.set(userId, true);
+      Poster.likes++
+    }
+//Handout badges
+    if(Poster.likes==5){
+      Poster.Badge5likes=true;
+    }
+      if(Poster.likes==10){
+      Poster.Badge10likes=true;
+    }
+//Save to database
+    const updatedPost = await Post.findByIdAndUpdate(
+      id,
+      { likes: post.likes },
+      { new: true }
+    );
+
+    await Poster.save();
+
+    res.status(200).json(updatedPost);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+
+const wowPost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { userId } = req.body;
+    const post = await Post.findById(id);
+    const isWow = post.wow.get(userId);
+
+    if (isWow) {
+      post.wow.delete(userId);
+    } else {
+      post.wow.set(userId, true);
     }
 
     const updatedPost = await Post.findByIdAndUpdate(
       id,
-      { likes: post.likes },
+      { wow: post.wow },
       { new: true }
     );
 
@@ -108,59 +147,62 @@ const likePost = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+const helpfulPost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { userId } = req.body;
+    const post = await Post.findById(id);
+    const isHelpful = post.helpful.get(userId);
+
+    if (isHelpful) {
+      post.helpful.delete(userId);
+    } else {
+      post.helpful.set(userId, true);
+    }
+
+    const updatedPost = await Post.findByIdAndUpdate(
+      id,
+      { helpful: helpful.wow },
+      { new: true }
+    );
+
+    res.status(200).json(updatedPost);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+
 //READ
 const getFollowPosts = async (req, res)=>{
+  try{
  const {userId}=req.params
-  try {
+ const {tags} = req.query
+ console.log(userId)
     const currentUserPosts = await Post.find({ userId: userId });
-    const followingPosts = await User.aggregate([
-      {
-        $match: {
-          _id: new mongoose.Types.ObjectId(userId),
-        },
-      },
-      {
-        $lookup: {
-          from: "posts",
-          localField: "following",
-          foreignField: "userId",
-          as: "followingPosts",
-        },
-      },
-      {
-        $project: {
-          followingPosts: 1,
-          _id: 0,
-        },
-      },
-    ]);
+   const user = await User.findById(userId);
+   console.log(user.following)
+   const followingPosts = await Post.find({userId: { $in: user.following }, tags:tags })
 
     res
       .status(200)
-      .json(currentUserPosts.concat(...followingPosts[0].followingPosts) //combine owner posts with following posts
+      .json(currentUserPosts.concat(...followingPosts) //combine owner posts with following posts
       .sort((a,b)=>{
           return b.createdAt - a.createdAt; //sort by date in descending
       })
       );
-  } catch (error) {
+    }
+  catch (error) {
     res.status(500).json(error);
   }
 };
+
+
 //POST
-const postComments = async (req,res)=>{
- const {userId} = req.params
-  const {desc , postid } = req.body;
-  const foundUser= User.findById(userId)
-            const comments={
-                  userId,
-                  firstname:foundUser.firstName,
-                  lastname:foundUser.lastName,
-                  desc,
-            }
-            const post = await Post.findById(postid);
-            post.comments.push(comments);
-            await post.save();
-            res.status(200).json(post);
+const getPostComments = async (req,res)=>{
+  const {postId} = req.body;
+  const post= await Post.findById(postId)
+  const comment = await Comment.find({postId:post._id})
+  res.status(200).json(comment);
 }
 
 
@@ -169,8 +211,4 @@ const postComments = async (req,res)=>{
 
 
 
-
-
-
-
-module.exports= {createPost, getFeedPosts, getUserPosts, likePost, getFollowPosts, postComments, deletePost, updatePost};
+module.exports= {createPost, getFeedPosts, getUserPosts, likePost, wowPost, helpfulPost, getFollowPosts, getPostComments, deletePost, updatePost};

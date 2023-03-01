@@ -29,25 +29,20 @@ var postsSchema = mongoose.Schema({
       type: Map,
       of: Boolean,
     },
+    helpful: {
+      type: Map,
+      of: Boolean,
+    },
+    wow: {
+      type: Map,
+      of: Boolean,
+    },
+    tags: {
+      type: String,
+      Enum: ['Javascript', 'Python', 'Java', 'C++', 'C#', 'C', 'Flutter', 'HTML', 'CSS']
+    },
     comments: {
-      type: [ {
-                              userId:{
-                                        type:mongoose.Schema.ObjectId,
-                                        required:true
-                              },
-                              firstname:{
-                                        type:String,
-                                        required:true
-                              },
-                              lastname:{
-                                        type:String
-                              },
-                              desc:{
-                                        type:String,
-                                        required:true
-                              }
-                    }],
-      default: [],
+      type: [mongoose.Schema.Types.ObjectId]
     },
 },
 {timestamps:true}

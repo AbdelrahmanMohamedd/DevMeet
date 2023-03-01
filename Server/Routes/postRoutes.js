@@ -5,14 +5,13 @@ const Posts =require("../Controllers/postsController");
 //GET
 router.get("/posts", Posts.getFeedPosts);
 router.get("/profile/posts/:userId", Posts.getUserPosts);
-router.get("/posts/:id/", Posts.getFollowPosts);
-
+router.get("/posts/:userId/", Posts.getFollowPosts);
+router.get("/posts/comments", Posts.getPostComments);
 //POST
 router.post("/posts", Posts.createPost);
 
 /* UPDATE */
-router.patch("/like/:id", Posts.likePost);
-router.patch("/post/comment", Posts.postComments)
+router.patch("/likes/:id", Posts.likePost);
 router.put('/posts/:id', Posts.updatePost)
 
 //Delete

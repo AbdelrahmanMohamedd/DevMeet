@@ -37,6 +37,24 @@ catch(err){
 res.status(404).json({message: err.message + "get follower error"})
 }
 }
+//GET USER COMMUNITIES
+const getUserCommunities=async(req, res)=>{
+const {id}=req.body;
+const UserId=id
+const User = await userAuth.findOne({_id:UserId})
+res.status(200).json(User.Communities)
+
+}
+
+//GET USER MEETUPS
+
+const getUserMeetups=async(req, res)=>{
+const {id}=req.body;
+const UserId=id
+const User = await userAuth.findOne({_id:UserId})
+res.status(200).json(User.Meetups)
+
+}
 // add and remove follows
 
 const addRemoveFollow = async (req,res)=>{
@@ -45,8 +63,8 @@ const addRemoveFollow = async (req,res)=>{
  const followuser=await userAuth.findById(followid).select("-password")
 if((user && followuser) && (id!==followid)){
 if(user.following.includes(followuser._id)){
- user.following = user.following.filter((id)=>{
-  return id!==followid;
+user.following = user.following.filter((id)=>{
+return id!==followid;
   
  })
   followuser.followers = followuser.followers.filter((id)=>{
@@ -56,9 +74,8 @@ if(user.following.includes(followuser._id)){
 }
 else{
  console.log("true")
-  user.following.push(followid);
+ user.following.push(followid);
  followuser.followers.push(id)
-
 }
 console.log("true*****")
  await user.save();
@@ -77,4 +94,4 @@ else{
 
 
 
-module.exports= {getUser, getUserFollowing, getUserFollowers, addRemoveFollow};
+module.exports= {getUser, getUserFollowing, getUserFollowers, addRemoveFollow, getUserCommunities};
