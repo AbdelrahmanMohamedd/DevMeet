@@ -48,12 +48,13 @@ else{
 }
 var LoginUser = async (req,res)=>{
 var LoginUser=req.body;
+console.log(LoginUser)
 LoginValidator = loginValidator(LoginUser)
 // console.log(loginValidator)
 if(LoginValidator){
     //check if user exists
     var foundUser = await userAuth.find({email:LoginUser.email}).exec();
-    // console.log(foundUser)
+ 
     if(!foundUser){
        res.status(404).send("Email or password is invalid")
     }

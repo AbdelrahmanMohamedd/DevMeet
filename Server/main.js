@@ -11,12 +11,14 @@ const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv')
 const mongoose = require("mongoose");
 const multer = require("multer")
+const cors = require('cors')
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 app.use(cookieParser())
 app.use(helmet());
 app.use(morgan('tiny'));
+app.use(cors({ origin: true, credentials: true }))
 dotenv.config()
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
@@ -37,7 +39,7 @@ app.get("/",(req,res)=>{
 })
 //should be in routes *************
 app.get("/home",Auth.requireAuth,(req,res)=>{
-    res.sendFile(path.join(__dirname,"../Client/index.html"));
+    res.sendFile(path.join(__dirname,"../Client/src/components/homecomponent.jsx"));
 
 })
 //  app.get("/set-cookies", (req,res)=>{

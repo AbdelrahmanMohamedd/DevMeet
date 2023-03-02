@@ -3,31 +3,35 @@ import React, { useRef } from 'react';
 import Headercomponents from './headercomponents';
 import Footercomponents from './footercomponents';
 import Maincomponents from './maincomponents';
+import { useEffect, useState } from "react";
+import { AuthContext} from "../Context/AuthContext";
 
 function Logincomponents(props) {
-let email = useRef()
-let password = useRef()
+let [email, setEmail]=useState('')
+let [password, setPassWord]=useState('')
+let [error, setError]=useState('')
+let {dispatch} = AuthContext()
 
 const LoginServer = async ()=>{
+
 console.log("hi")
-email=email.current.value
-password=password.current.value
-try{
- const res = await fetch('/login', { 
+ const res = await fetch('http://localhost:7400/login', { 
         method: 'POST', 
-        body: JSON.stringify({ email, password }),
-        headers: {'Content-Type': 'application/json'}
+        body: JSON.stringify({email, password}),
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true, credentials: 'include'
       });
+  console.log(res)
+  const json = await res.json
+  console.log(json)
+    if (!res.ok) {
+      setError(json.error)
+    }
       const data = await res.json();
       console.log(data);
       if (data.user) {
-       
+      dispatch({type:"LOGIN", payload:data})
       }
-
-    }
-    catch (err) {
-      console.log(err);
-    }
 
 }
     return (
@@ -48,11 +52,12 @@ try{
             <br />
             <h2 className={classes.myfont}>sign in</h2>
             <br />
-            <input className={classes.input} type="text" placeholder="email" ref={email} />
+            <input className={classes.input} type="text" placeholder="email" onChange={(e)=>{setEmail(e.target.value)}} />
             <br />
-            <input className={classes.input}type="text" placeholder="password" ref={password} />
+            <input className={classes.input}type="text" placeholder="password" onChange={(e)=>{setPassWord(e.target.value)}} />
             <br />
-            <button className={classes.btn} onClick={LoginServer}>sign in</button>
+            <button  className={classes.btn} onClick={LoginServer}>sign in</button>
+           {error && <div className="error">{error}</div>}
             <div><img src="" alt="" />
             <a href=""></a></div>
             <div className={classes.sign }><img src="images/googleimg.png" alt="google" width="30" height="30"/>

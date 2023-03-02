@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 
 var commentSchema = mongoose.Schema({
-  userId:{
+userId:{
         type:mongoose.Schema.ObjectId,
         required:true},
 postId:{
