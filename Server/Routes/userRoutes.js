@@ -15,6 +15,7 @@ router.get("/user/followers/:id", userController.getUserFollowers)
 
 //remove or add follow
 router.patch("/user/:id/:followid", userController.addRemoveFollow)
+router.put("/user/:id", userController.updateUser)
 //follow a user
 //unfollow a user
 module.exports=router;

@@ -92,6 +92,20 @@ else{
 }
 }
 
+//Update User
+
+const updateUser= async (req, res) => {
+  if (req.body._id === req.params.id || req.body.isAdmin) {
+      const user = await userAuth.findByIdAndUpdate(req.params.id, {
+        $set: req.body,
+      });
+      res.status(200).json("Account has been updated");
+    
+  } else {
+    return res.status(403).json("You can update only your account!");
+  }
+}
 
 
-module.exports= {getUser, getUserFollowing, getUserFollowers, addRemoveFollow, getUserCommunities};
+
+module.exports= {getUser, updateUser, getUserFollowing, getUserFollowers, addRemoveFollow, getUserCommunities};
