@@ -13,13 +13,13 @@ const maxAge = 3*24*60*60 //expiration data for cookies
 var RegisterNewUser = async (req, res)=>{
  var newUser= req.body;
  userValidator= UserValidator(req.body);
+ try{
  if(userValidator){
  let foundUser = await userAuth.find({email:newUser.email}).exec();
 console.log(foundUser)
-try{
  if(foundUser.length!=0){
         //Please Login
-        res.status(400).send("User Already Exist, Please Login Now")
+        throw Error ("User Already Exist, Please Login Now")
     }
     else{
         //Add
@@ -37,13 +37,14 @@ try{
     }
 
 }
-catch(err){
-    console.log(err)
-}
-}
 else{
-    res.status(400).send("You entered invalid information")
+    throw Error("You entered invalid information")
 }
+ }
+catch(error){
+    res.status(400).json({error: error.message})
+}
+
 
 }
 var LoginUser = async (req,res)=>{
@@ -51,17 +52,17 @@ var LoginUser=req.body;
 console.log(LoginUser)
 LoginValidator = loginValidator(LoginUser)
 // console.log(loginValidator)
+try{
 if(LoginValidator){
     //check if user exists
     var foundUser = await userAuth.find({email:LoginUser.email}).exec();
- 
     if(!foundUser){
-       res.status(404).send("Email or password is invalid")
+    throw Error ("Email or password is invalid")
     }
     // check correct password
    let checkPass= await bcrypt.compare(LoginUser.password, foundUser[0].password)
    if(!checkPass){
-      res.status(404).send("Email or password is invalid")
+      throw Error ("Email or password is invalid")
    }
    var accessToken = jwt.sign({UserId:foundUser[0]._id, adminRole:foundUser[0].isAdmin}, "thisissecret")
    res.header("x-auth-token", accessToken)
@@ -74,16 +75,13 @@ res.status(201).json({user: foundUser[0]._id})
 
 }
 else{
-     res.status(404).json("enter valid Email or password")
+     throw Error ("enter valid Email or password")
+}
+}
+catch(error){
+res.status(400).json({error: error.message})
 }
 
-}
-var DisplayLogin = (req,res)=>{
-      res.sendFile(path.join(__dirname,"../../Client/index.html"));
-}
-
-var DisplayRegister = (req,res)=>{
-      res.sendFile(path.join(__dirname,"../../Client/index.html"));
 }
 
 
@@ -134,4 +132,4 @@ res.redirect('/login')
 // }
 
 
-module.exports= {RegisterNewUser, LoginUser, DisplayLogin, DisplayRegister, LogoutUser};
+module.exports= {RegisterNewUser, LoginUser, LogoutUser};

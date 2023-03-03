@@ -4,13 +4,13 @@ import Headercomponents from './headercomponents';
 import Footercomponents from './footercomponents';
 import Maincomponents from './maincomponents';
 import { useEffect, useState } from "react";
-import { AuthContext} from "../Context/AuthContext";
+import {useAuthContext} from "../hooks/useAuthContext";
 
 function Logincomponents(props) {
 let [email, setEmail]=useState('')
 let [password, setPassWord]=useState('')
 let [error, setError]=useState('')
-let {dispatch} = AuthContext()
+let {dispatch} = useAuthContext()
 
 const LoginServer = async ()=>{
 
@@ -22,16 +22,19 @@ console.log("hi")
         withCredentials: true, credentials: 'include'
       });
   console.log(res)
-  const json = await res.json
-  console.log(json)
+ const data = await res.json();
     if (!res.ok) {
-      setError(json.error)
+      setError(data.error)
     }
-      const data = await res.json();
+    if (res.ok) {
+      // save the user to local storage
+      localStorage.setItem('user', JSON.stringify(data))
+
+     
       console.log(data);
-      if (data.user) {
       dispatch({type:"LOGIN", payload:data})
-      }
+      
+    }
 
 }
     return (
