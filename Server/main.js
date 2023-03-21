@@ -105,8 +105,7 @@ app.use(postRoutes);
 app.use(notificationRoutes);
 app.use("/communities", communityRouter);
 app.use("/api/conversations", conversationroute);
-app.use("/api/messages", messageroute);
-app.use("/api/zoom-meetings", zoomMeetingRoutes);
+app.use("/api/messages", messageroute); 
 
 // app.get('*', Auth.checkUser);
 
