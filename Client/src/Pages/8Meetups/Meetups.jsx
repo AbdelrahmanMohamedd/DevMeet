@@ -61,7 +61,7 @@ const Meetups = () => {
                         </div></div>
                     <div className=" col-4">
                         <div className="row mt-4">
-                            <h3>{t(Events)}</h3>
+                            <h3>{t("Events")}</h3>
                             <div className='d-flex'>
                                 <div className=" mybackground col-2 text-sm-center">1  <br /> Dec</div>
                                 <div className="myeventdiv col-10  border-bottom border-dark t-center text-sm-center mb-2">{t("event starts")}</div>
