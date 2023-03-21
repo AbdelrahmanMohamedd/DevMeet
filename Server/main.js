@@ -96,7 +96,6 @@ const communityRouter = require("./Routes/communityRoutes");
 const messageRoute = require("./Routes/messageRoutes");
 const conversationRoute = require("./Routes/conversationRoutes");
 const notificationRoutes = require("./Routes/notificationRoutes");
-const zoomMeetingRoutes = require("./Routes/zoomMeetingRoutes");
 
 //routes middlewares
 app.use(commentRoutes);
