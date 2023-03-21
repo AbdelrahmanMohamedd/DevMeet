@@ -76,16 +76,15 @@ const getUserMeetups = async (req, res) => {
 // add and remove follows
 
 const addRemoveFollow = async (req,res)=>{
-console.log(req.params)
+// console.log(req.params)
  const {id, followId} = req.params
- console.log(id)
- console.log(followId)
+//  console.log(id)
+//  console.log(followId)
  const user= await userAuth.findById(id).select("-password")
  const followuser=await userAuth.findById(followId).select("-password")
- console.log("followuser:")
- console.log(followuser)
- console.log(user)
- console.log(followuser)
+ 
+//  console.log(user)
+//  console.log(followuser)
 if((user && followuser) && (id!=followId)){
 if(user.following.includes(followuser._id)){
 const index = user.following.indexOf(followId);
@@ -96,16 +95,16 @@ const followIndex = followuser.followers.indexOf(id);
 if (followIndex !== -1) {
   followuser.followers.splice(followIndex, 1);
 }
-console.log('After filter:')
-console.log(user.following) 
-console.log(followuser.followers)
-console.log("unfollowed")
+// console.log('After filter:')
+// console.log(user.following) 
+// console.log(followuser.followers)
+// console.log("unfollowed")
 }
 else{
- console.log("true")
+//  console.log("true")
  user.following.push(followId);
  followuser.followers.push(id)
- console.log("followed")
+//  console.log("followed")
 }
  await user.save();
  await followuser.save();
@@ -129,14 +128,14 @@ const updateUser = async (req, res) => {
     try {
       const user = await userAuth.findById(req.params.id)
       const { firstName, lastName, city, desc, career } = req.body;
-      console.log(req.files.image1)
+      // console.log(req.files.image1)
       const image1 = (req.files.image1) ? req.files.image1[0].filename : user.profilePicture;
-      console.log(image1)
+      // console.log(image1)
       const image2 = (req.files.image2) ? req.files.image2[0].filename : user.coverPicture;
-      console.log(image2)
+      // console.log(image2)
 
       Object.assign(user, { firstName, lastName, profilePicture: image1, coverPicture: image2, city, desc, career })
-      console.log(user)
+      // console.log(user)
       await user.save()
       res.status(200).json({ user: user });
     }

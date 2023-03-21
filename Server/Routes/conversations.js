@@ -4,7 +4,7 @@ router.post("/", async (req, res) => {
    
   
       const foundConversation =  await Conversation.findOne({members: { $all:[req.body.senderId, req.body.receiverId]}})
-      console.log(foundConversation)
+      // console.log(foundConversation)
       if(foundConversation!=null){
       await foundConversation.deleteOne();
       }

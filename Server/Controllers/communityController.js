@@ -3,7 +3,7 @@ const userAuthModel = require("../Models/userAuthModel");
 
 
 var createCommunity = async (req, res) => {
-    console.log("from create communit method")
+    // console.log("from create communit method")
     //this line blow was used only to tes
     // var { communityName: name, communityAdmin: admin, communityDescription: desc ,AdminName:aName,registeredNumber:registNo,posts:posts} = req.body;
 
@@ -12,7 +12,7 @@ var createCommunity = async (req, res) => {
     image1 = (req.files.image1) ? req.files.image1[0].filename : "CommunityCover.png";
     image2 = (req.files.image2) ? req.files.image2[0].filename : "CommunityIcon.png";
 
-    console.log("start fun")
+    // console.log("start fun")
     var obk = { adminId: admin, adminName: aName }
     var commModel = new communityModel({
         communityName: name, communityAdmin: obk,
@@ -26,7 +26,7 @@ var createCommunity = async (req, res) => {
 }
 
 const getCommunities = async (req,res)=>{
-    console.log("******entered get communities")
+    // console.log("******entered get communities")
     const communities = await communityModel.find({}).limit(10)
     res.status(200).json(communities)
 }
@@ -34,14 +34,14 @@ const getCommunities = async (req,res)=>{
 
 var registerToCommunity = async (req, res) => {
     var { userId, communityId } = req.body;
-    console.log("inside registerToCommunity")
+    // console.log("inside registerToCommunity")
     var comm = await communityModel.findById(communityId);
     comm.registeredUsers.push(communityId);
     comm.registeredNumber += 1;
     await comm.save();
-    console.log(comm);
+    // console.log(comm);
 
-    console.log("after pushing in the array")
+    // console.log("after pushing in the array")
     var usr = await userAuthModel.findById(userId);
     usr.communities.push(communityId);
     await usr.save();
@@ -57,8 +57,8 @@ var registerToCommunity = async (req, res) => {
 var getACommunitiesByuserId = async (req, res) => {
 
     var { userId } = req.body;
-    console.log(userId);
-    console.log(typeof userId)
+    // console.log(userId);
+    // console.log(typeof userId)
     var x = await userAuthModel.findById(userId).populate('communities');
     // var x = await userAuthModel.find({ _id: userId }).populate('posts')
     //.select('communities')
@@ -70,7 +70,7 @@ var getACommunitiesByuserId = async (req, res) => {
 
 //just for test multer functionality
 var tryImage = (req, res) => {
-    console.log("image")
+    // console.log("image")
     res.json({ body: req.body, file: req.file })
 }
 
@@ -78,11 +78,11 @@ var tryImage = (req, res) => {
 var getCommunityByid = async (req, res) => {
     let communityiD = req.query.id;
     //let {communityiD}=req.body;
-    console.log("the nono is below")
-    console.log(communityiD)
+    // console.log("the nono is below")
+    // console.log(communityiD)
     //if( communityiD.match(/^[0-9a-fA-F]{24}$/))
     //{
-    console.log("validation is true");
+    // console.log("validation is true");
 
     newComm = await communityModel.findById(communityiD)
         .populate('posts')

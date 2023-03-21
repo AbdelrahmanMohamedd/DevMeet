@@ -11,7 +11,7 @@ const maxAge = 3*24*60*60 //expiration data for cookies
 
 var RegisterNewUser = async (req, res)=>{
  var newUser= req.body;
- console.log("from register new user")
+//  console.log("from register new user")
  
 
  //edit to add profilePicture
@@ -24,11 +24,11 @@ var RegisterNewUser = async (req, res)=>{
 //  img2= "profileCover.png" ;
 
  newUser={...newUser,profilePicture:img1,coverPicture:img2};
- console.log(newUser)
+//  console.log(newUser)
  var userValidator= UserValidator(newUser);
  try{
  if(userValidator){
-console.log("true")
+// console.log("true")
  let foundUser = await userAuth.find({email:newUser.email}).exec();
  if(foundUser.length!=0){
         //Please Login
@@ -39,10 +39,10 @@ console.log("true")
          var HashedPassword = await bcrypt.hash(newUser.password,10);
          newUser.password = HashedPassword;
          var newU = new userAuth(newUser);
-         console.log(newU)
+        //  console.log(newU)
         await newU.save();
-        console.log("user saved")
-        console.log(newU)
+        // console.log("user saved")
+        // console.log(newU)
      const accessToken = jwt.sign({userId:newU._id, adminRole:newU.isAdmin}, "thisissecret", {expiresIn: maxAge});
      res.cookie('jwt', accessToken, {maxAge: maxAge * 1000}) // times 1000 because cookies is in milliseconds   
      res.header("x-auth-token", accessToken)
@@ -68,10 +68,10 @@ LoginValidator = loginValidator(LoginUser)
 // console.log(loginValidator)
 try{
 if(LoginValidator){
-    console.log("true")
+    // console.log("true")
     //check if user exists
     var foundUser = await userAuth.find({email:LoginUser.email}).exec();
-    console.log(foundUser)
+    // console.log(foundUser)
     if(!foundUser){
     console.log('error thrown')
     throw Error ("Email or password is invalid")
@@ -81,7 +81,7 @@ if(LoginValidator){
    if(!checkPass){
       throw Error ("Email or password is invalid")
    }
-   console.log("this is the login method")
+//    console.log("this is the login method")
    var accessToken = jwt.sign({userId:foundUser[0]._id, adminRole:foundUser[0].isAdmin}, "thisissecret")
    res.header("x-auth-token", accessToken)
    res.cookie('jwt', accessToken, {maxAge: maxAge * 1000}) // times 1000 because cookies is in milliseconds   

@@ -106,7 +106,7 @@ const Notifies = require("../Models/notificationModel");
 const notifyCtrl = {
   createNotify: async (req, res) => {
     try {
-      console.log("INSIDE CREATE NOTIFY");
+      // console.log("INSIDE CREATE NOTIFY");
       const {
         id,
         recipients,
@@ -132,16 +132,16 @@ const notifyCtrl = {
         });
         //user: req.user._id
         // console.log("before save in create notify")
-        console.log(notify);
+        // console.log(notify);
         await notify.save();
         return res.json(notify);
       } else {
-        console.log("this like notification already exists");
-        console.log("find notify + flag like true");
+        // console.log("this like notification already exists");
+        // console.log("find notify + flag like true");
         var monotify = await Notifies.find({ id: id, text: text, url: url });
-        console.log(monotify);
+        // console.log(monotify);
         await Notifies.deleteOne({ id: id, text: text, url: url });
-        console.log("delete the previous like notifcation succesfully");
+        // console.log("delete the previous like notifcation succesfully");
       }
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -161,8 +161,8 @@ const notifyCtrl = {
   },
   getNotifies: async (req, res) => {
     try {
-      console.log("from get notifics");
-      console.log(req.query.id);
+      // console.log("from get notifics");
+      // console.log(req.query.id);
       //const notifies = await Notifies.findById(req.query.id);
 
       // const notifies = await Notifies.find({ recipients: {$elemMatch :{id:req.query.id}} },'id user ')
