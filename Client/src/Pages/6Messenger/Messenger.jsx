@@ -57,7 +57,7 @@ const Messanger = () => {
     useEffect(() => {
         const getConversations = async () => {
             try {
-                const res = await axios.get("http://localhost:7400/api/conversations/" + user._id)
+                const res = await axios.get("https://devmeet-23-d82k.onrender.com/api/conversations/" + user._id)
                 setConversation(res.data);
                 console.log(res);
             } catch (err) {
@@ -71,7 +71,7 @@ const Messanger = () => {
 
     useEffect(() => {
         const getUser = async () => {
-            await axios.get("http://localhost:7400/api/messages/" + currentChat?._id).then(res => {
+            await axios.get("https://devmeet-23-d82k.onrender.com/api/messages/" + currentChat?._id).then(res => {
                 setMessages(res.data)
             }).catch(
                 err => {
@@ -85,7 +85,7 @@ const Messanger = () => {
     }, [currentChat])
     useEffect(() => {
         const getImgUser = async () => {
-            await axios.get("http://localhost:7400/user/" + user?._id).then(res => {
+            await axios.get("https://devmeet-23-d82k.onrender.com/user/" + user?._id).then(res => {
 
                 // setuserImg(res.data)
                 // img =res.data.profilePicture
@@ -120,7 +120,7 @@ const Messanger = () => {
             receiverId,
             text: newMessage,
         })
-        await axios.post("http://localhost:7400/api/messages/", message).
+        await axios.post("https://devmeet-23-d82k.onrender.com/api/messages/", message).
             then(res => {
                 setMessages([...messages, res.data])
                 console.log(res.data)

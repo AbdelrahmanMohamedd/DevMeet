@@ -49,7 +49,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
     let flaglike;
     await axios
       .patch(
-        `http://localhost:7400/likes/${post._id}`,
+        `https://devmeet-23-d82k.onrender.com/likes/${post._id}`,
         { userId },
         { withCredentials: true }
       )
@@ -68,7 +68,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
         
         axios
           .get(
-            `http://localhost:7400/likeCheck/${post._id}/${ userId }`
+            `https://devmeet-23-d82k.onrender.com/likeCheck/${post._id}/${ userId }`
             
           )
           .then((res) => {
@@ -95,7 +95,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
         }
 
         axios
-          .post("http://localhost:7400/notification", { ...msg, flaglike })
+          .post("https://devmeet-23-d82k.onrender.com/notification", { ...msg, flaglike })
           .then((res) => {
             console.log("notify added succefully");
           });
@@ -115,7 +115,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
       formData.append("image1", image);
       formData.append("postId", post._id);
       axios
-        .post(`http://localhost:7400/comments/${userId}`, formData, {
+        .post(`https://devmeet-23-d82k.onrender.com/comments/${userId}`, formData, {
           withCredentials: true,
         })
         .then((response) => {
@@ -159,7 +159,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
         console.log("before calling create Comment notification ");
         //send notifcation to database
         axios
-          .post("http://localhost:7400/notification", { ...msg })
+          .post("https://devmeet-23-d82k.onrender.com/notification", { ...msg })
           .then((res) => {
             console.log("notify added succefully");
           });
@@ -184,7 +184,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
   const commentGet = () => {
     const postId = post._id;
     axios
-      .get(`http://localhost:7400/posts/comments/${postId}`, {
+      .get(`https://devmeet-23-d82k.onrender.com/posts/comments/${postId}`, {
         withCredentials: true,
       })
       .then((response) => {
@@ -202,7 +202,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
   const DeleteMyPost = () => {
     const id = post._id;
     axios
-      .delete(`http://localhost:7400/posts/${id}`, { withCredentials: true })
+      .delete(`https://devmeet-23-d82k.onrender.com/posts/${id}`, { withCredentials: true })
       .then((response) => {
         return response;
       })
@@ -218,7 +218,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
   useEffect(() => {
     const id = post.userId;
     axios
-      .get(`http://localhost:7400/user/${id}`, { withCredentials: true })
+      .get(`https://devmeet-23-d82k.onrender.com/user/${id}`, { withCredentials: true })
       .then((response) => {
         return response;
       })
@@ -239,7 +239,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
               <NavLink to={`/profile`} state={{ user: otherUser }}>
                 <img
                   className="postProfileImg"
-                  src={`http://localhost:7400/images/${post.userPicturePath}`}
+                  src={`https://devmeet-23-d82k.onrender.com/images/${post.userPicturePath}`}
                   alt=""
                 />
               </NavLink>
@@ -293,7 +293,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
             {post.picturePath && (
               <img
                 className="postImg"
-                src={`http://localhost:7400/images/${post.picturePath}`}
+                src={`https://devmeet-23-d82k.onrender.com/images/${post.picturePath}`}
                 alt=""
               />
             )}

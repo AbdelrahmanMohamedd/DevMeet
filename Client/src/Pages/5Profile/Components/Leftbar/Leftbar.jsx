@@ -14,7 +14,7 @@
 //     const filterTag = (event) => {
 //         const tag = event.target.innerText.replace(/\s/g, '');
 //         console.log(tag)
-//         axios.get(`http://localhost:7400/posts/tags/${tag}`)
+//         axios.get(`https://devmeet-23-d82k.onrender.com/posts/tags/${tag}`)
 //             .then((response) => { return response })
 //             .then(({ data }) => {
 //                 getTagPosts(data)
@@ -35,7 +35,7 @@
 //     }, [])
 
 //     useEffect(() => {
-//         axios.get(`http://localhost:7400/user/top/likes`)
+//         axios.get(`https://devmeet-23-d82k.onrender.com/user/top/likes`)
 //             .then((response) => { return response })
 //             .then(({ data }) => {
 //                 setTopUsers(data)

@@ -50,7 +50,7 @@ const Post = ({post, userId, sendNewPost, refreshPosts }) => {
 
   // const [isliked, setIsLiked] = useState(false)
   const likeHandler = async () => {
-    await axios.patch(`http://localhost:7400/likes/${post._id}`, { userId }, { withCredentials: true })
+    await axios.patch(`https://devmeet-23-d82k.onrender.com/likes/${post._id}`, { userId }, { withCredentials: true })
       .then((response) => { return response })
       .then(({ data }) => {
         console.log(data)
@@ -69,7 +69,7 @@ const Post = ({post, userId, sendNewPost, refreshPosts }) => {
       formData.append("description", comment)
       formData.append("image1", image)
       formData.append('postId', post._id)
-      axios.post(`http://localhost:7400/comments/${userId}`, formData, { withCredentials: true })
+      axios.post(`https://devmeet-23-d82k.onrender.com/comments/${userId}`, formData, { withCredentials: true })
         .then((response) => { return response })
         .then(({ data }) => {
           console.log(data)
@@ -91,7 +91,7 @@ const Post = ({post, userId, sendNewPost, refreshPosts }) => {
   }
   const commentGet = () => {
     const postId = post._id
-    axios.get(`http://localhost:7400/posts/comments/${postId}`, { withCredentials: true })
+    axios.get(`https://devmeet-23-d82k.onrender.com/posts/comments/${postId}`, { withCredentials: true })
       .then((response) => { return response })
       .then(({ data }) => {
         setComments(data)
@@ -102,7 +102,7 @@ const Post = ({post, userId, sendNewPost, refreshPosts }) => {
 
   const DeleteMyPost = () => {
     const id = post._id
-    axios.delete(`http://localhost:7400/posts/${id}`, { withCredentials: true })
+    axios.delete(`https://devmeet-23-d82k.onrender.com/posts/${id}`, { withCredentials: true })
       .then((response) => { return response })
       .then(({ data }) => {
         console.log(data)
@@ -113,7 +113,7 @@ const Post = ({post, userId, sendNewPost, refreshPosts }) => {
 
   useEffect(() => {
     const id = post.userId
-    axios.get(`http://localhost:7400/user/${id}`, { withCredentials: true })
+    axios.get(`https://devmeet-23-d82k.onrender.com/user/${id}`, { withCredentials: true })
       .then((response) => { return response })
       .then(({ data }) => {
         setOtherUser(data)
@@ -129,7 +129,7 @@ const Post = ({post, userId, sendNewPost, refreshPosts }) => {
             
             <div className="postTopLeft">
               <NavLink to={`/profile`} state={{ user: otherUser }}> 
-                <img className='postProfileImg'  src={`http://localhost:7400/images/${post.userPicturePath}`} alt="" />
+                <img className='postProfileImg'  src={`https://devmeet-23-d82k.onrender.com/images/${post.userPicturePath}`} alt="" />
               </NavLink>
 
               <span className="postUsername"> {post.firstName+" "+post.lastName} </span>
@@ -160,7 +160,7 @@ const Post = ({post, userId, sendNewPost, refreshPosts }) => {
           </div>
           <div className="postCenter">
             <span className="postText">{post.description}</span>
-            {post.picturePath && <img className='postImg' src={`http://localhost:7400/images/${post.picturePath}`} alt="" />}
+            {post.picturePath && <img className='postImg' src={`https://devmeet-23-d82k.onrender.com/images/${post.picturePath}`} alt="" />}
           </div>
           <div className="postBottom">
             <div className="postBottomLeft"  onClick={likeHandler} > 

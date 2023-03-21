@@ -34,7 +34,7 @@ function App() {
   const [socket, setSocket] = useState();
 
   useEffect(() => {
-    setSocket(io.connect("http://localhost:7400"));
+    setSocket(io.connect("https://devmeet-23-d82k.onrender.com"));
     console.log(socket);
   }, []);
 

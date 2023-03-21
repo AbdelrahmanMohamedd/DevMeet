@@ -29,7 +29,7 @@ const Register =  () => {
             setError("Passwords don't match")
         }
         else{
-      const res = await fetch('http://localhost:7400/register', {
+      const res = await fetch('https://devmeet-23-d82k.onrender.com/register', {
       method: 'POST',
       body: JSON.stringify({firstName, lastName, email, password }),
       headers: { 'Content-Type': 'application/json' },

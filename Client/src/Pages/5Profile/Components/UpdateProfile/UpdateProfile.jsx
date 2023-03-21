@@ -42,7 +42,7 @@ function UpdateProfile() {
     formData.append("lastName", lastName)
     formData.append("city", location)
     formData.append("career", occupation)
-    axios.put(`http://localhost:7400/user/${user._id}`, formData, { withCredentials: true, })
+    axios.put(`https://devmeet-23-d82k.onrender.com/user/${user._id}`, formData, { withCredentials: true, })
 
       .then((response) => {
         console.log(response)

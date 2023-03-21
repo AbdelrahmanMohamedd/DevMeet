@@ -46,7 +46,7 @@ const Community = () => {
     useEffect(() => {
         console.log("Community Componen mounting");
         axios
-            .get("http://localhost:7400/communities/getCommunityByid", {
+            .get("https://devmeet-23-d82k.onrender.com/communities/getCommunityByid", {
                 params: {
                     id: idParam,
                 },
@@ -65,7 +65,7 @@ const Community = () => {
     /**
           //mounting function
           useEffect(() => {
-                  xios.post('http://localhost:7400/communities/getAcomm', {
+                  xios.post('https://devmeet-23-d82k.onrender.com/communities/getAcomm', {
                   userId: "6404a978ea4b09ad95f03e70"
               }).then(res => console.log(res))
           }, [])

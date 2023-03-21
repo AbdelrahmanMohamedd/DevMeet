@@ -14,7 +14,7 @@ const Conversation = ({ conversation, currentUser }) => {
     useEffect(() => {
         const friendId = conversation.members.find(m => m !== currentUser._id);
         const getUser = async () => {
-            await axios("http://localhost:7400/user/" + friendId).then(res => {
+            await axios("https://devmeet-23-d82k.onrender.com/user/" + friendId).then(res => {
                 setUser(res.data)
                 counter++;
             }).catch(
@@ -29,7 +29,7 @@ const Conversation = ({ conversation, currentUser }) => {
         //need to add profile picture
         <div className='conversation'>
             { 
-                user && <img className='conversationImg' src={`http://localhost:7400/images/${user?.profilePicture}`} alt="" />
+                user && <img className='conversationImg' src={`https://devmeet-23-d82k.onrender.com/images/${user?.profilePicture}`} alt="" />
             }
             {
                 user && <span className="conversationName">{user?.firstName+" "+user?.lastName}</span>

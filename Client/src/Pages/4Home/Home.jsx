@@ -32,7 +32,7 @@ const Homecomponent = ({ socket }) => {
   Object.freeze(user);
   const getNewPosts = () => {
     axios
-      .get(`http://localhost:7400/posts/${user._id}`)
+      .get(`https://devmeet-23-d82k.onrender.com/posts/${user._id}`)
       .then((response) => {
         return response;
       })
@@ -51,7 +51,7 @@ const Homecomponent = ({ socket }) => {
   };
   const getTrendingPosts = () => {
     axios
-      .get(`http://localhost:7400/posts/trending/${user._id}`)
+      .get(`https://devmeet-23-d82k.onrender.com/posts/trending/${user._id}`)
       .then((response) => {
         return response;
       })
@@ -101,7 +101,7 @@ const Homecomponent = ({ socket }) => {
     console.log(msg);
     socket.emit("notify", msg);
 
-    axios.post("http://localhost:7400/notification", { ...msg })
+    axios.post("https://devmeet-23-d82k.onrender.com/notification", { ...msg })
     .then((res) => { console.log("notify added succefully"); });
 
     /***
@@ -150,7 +150,7 @@ let msg={
     console.log(search);
     try {
       const searchQuery = search.split(" ");
-      axios.post(`http://localhost:7400/search`, { firstName: searchQuery[0], lastName: searchQuery[1] },
+      axios.post(`https://devmeet-23-d82k.onrender.com/search`, { firstName: searchQuery[0], lastName: searchQuery[1] },
           { withCredentials: true }
         )
         .then((response) => {
@@ -174,7 +174,7 @@ useEffect(()=>{
 
   //get all communities from this user
   useEffect(() => {
-    axios.post(`http://localhost:7400/communities/getAcomm`, 
+    axios.post(`https://devmeet-23-d82k.onrender.com/communities/getAcomm`, 
     {
         userId: user._id,
       })

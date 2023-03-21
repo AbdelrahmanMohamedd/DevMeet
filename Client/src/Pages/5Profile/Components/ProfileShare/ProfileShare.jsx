@@ -54,7 +54,7 @@ const Share = ({ user, sendNewPost, personalCheck }) => {
             // formData.append('communityId',communityId)
             formData.append('personalCheck', personalCheck)
             //console.log(formData)
-            axios.post(`http://localhost:7400/posts/`, formData, { withCredentials: true, })
+            axios.post(`https://devmeet-23-d82k.onrender.com/posts/`, formData, { withCredentials: true, })
                 .then((response) => {
                     console.log(response)
                     return response
@@ -86,7 +86,7 @@ const Share = ({ user, sendNewPost, personalCheck }) => {
         <div className='share'>
             <div className="shareWrapper">
                 <div className="shareTop">
-                    <img className='shareProfileImg' src={`http://localhost:7400/images/${user.profilePicture}`} alt="" />
+                    <img className='shareProfileImg' src={`https://devmeet-23-d82k.onrender.com/images/${user.profilePicture}`} alt="" />
                     {error && <div style={{ color: 'red', fontWeight: 'bolder' }}> {error}</div>}
                     <input placeholder={placeholder} required id="shareTextbox" className='shareInput' onChange={(e) => { setDescription(e.target.value) }} />
                 </div>

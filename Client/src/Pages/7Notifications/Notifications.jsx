@@ -42,7 +42,7 @@
 //   useEffect(() => {
 //     console.log("notification mounting");
 //     axios
-//       .get(`http://localhost:7400/notifications`, {
+//       .get(`https://devmeet-23-d82k.onrender.com/notifications`, {
 //         params: { id: userId },
 //       })
 //       .then((res) => {
@@ -58,7 +58,7 @@
 //         <div className="wrapper">
 //           <img
 //             className="UserImage"
-//             src={`http://localhost:7400/images/${e.user.profilePicture}`}
+//             src={`https://devmeet-23-d82k.onrender.com/images/${e.user.profilePicture}`}
 //             alt="User image"
 //           />
 //           <div className="NotificationContent">
@@ -70,7 +70,7 @@
 //           <span className="Icon">
 //             <img
 //               className="UserImage"
-//               src={`http://localhost:7400/images/notifyIcon.png`}
+//               src={`https://devmeet-23-d82k.onrender.com/images/notifyIcon.png`}
 //             />
 //           </span>
 //         </div>
@@ -128,7 +128,7 @@ const Notification = ({ socket }) => {
   useEffect(() => {
     console.log("notification mounting");
     axios
-      .get(`http://localhost:7400/notifications`, {
+      .get(`https://devmeet-23-d82k.onrender.com/notifications`, {
         params: { id: userId },
       })
       .then((res) => {
@@ -156,7 +156,7 @@ const Notification = ({ socket }) => {
           <div key={e._id} className="wrapper">
           <img
             className="UserImage"
-            src={`http://localhost:7400/images/${e.user.profilePicture}`}
+            src={`https://devmeet-23-d82k.onrender.com/images/${e.user.profilePicture}`}
             alt="User image"
           />
           <div className="NotificationContent">
@@ -168,7 +168,7 @@ const Notification = ({ socket }) => {
           <span className="Icon">
             <img
               className="UserImage"
-              src={`http://localhost:7400/images/${notifyTypeIcon}`}
+              src={`https://devmeet-23-d82k.onrender.com/images/${notifyTypeIcon}`}
             />
           </span>
         </div>
