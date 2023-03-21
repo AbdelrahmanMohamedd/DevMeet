@@ -10,12 +10,12 @@ const Meetups = () => {
     const navigate = useNavigate();
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        if(roomcode && roomcode.length==13 && typeof roomcode!= 'number'){
+        if(roomcode && typeof roomcode!= 'number'){
         // alert("your Room id is  "+roomcode)
         navigate(`/meetup/${roomcode}`)
         }
         else{
-            alert ("Enter a valid Zoom Meeting ID , It must be number of 13 digit")
+            alert ("Enter a valid Zoom Meeting ID")
         }
     }
     const setRoomCodeRandom = () => {

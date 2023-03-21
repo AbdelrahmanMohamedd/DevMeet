@@ -90,7 +90,7 @@ const Register =  () => {
     </div> 
     <div>
       <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 3 }} > {'Copyright © '}
-        <Link color="inherit" href="http://localhost:3000/"> DevMeet </Link>{' '} {new Date().getFullYear()}
+        <Link to="/" color="inherit" > DevMeet </Link>{' '} {new Date().getFullYear()}
       </Typography> 
     </div>
     </>
