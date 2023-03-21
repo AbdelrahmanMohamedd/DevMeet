@@ -32,7 +32,7 @@ let Team = (props) => {
                 </div>
                 <div  className="colmd3 colsm6 team"> 
                   <div className="thumbnail"> 
-                    <img src="images/TeamMembers/Abdelrahman.png" alt="." className="team-img" style={{height:'250px' , width:'auto'}}/>
+                    <img src="images/TeamMembers/Abdelrahman.PNG" alt="." className="team-img" style={{height:'250px' , width:'auto'}}/>
                     <div className="caption">
                       <h4 className="font-h4" >Abdelrahman Mohamed</h4>
                       <p className="parag" >MEARN stack Developer</p>

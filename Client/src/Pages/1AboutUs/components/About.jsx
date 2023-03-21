@@ -48,7 +48,7 @@ let About = (props) => {
           <h2 className="font-h2" >{t("Know More")}</h2>
           <div style={{display:'flex'}} >
             <div>
-              <img src="images/Aboutus.png " className="img-responsive" alt="" style={{height:'360px', width:'600px'}}/> 
+              <img src="/images/Aboutus.png " className="img-responsive" alt="" style={{height:'360px', width:'600px'}}/> 
             </div>
             <div>
                 <p className="parag aboutusarticle">
