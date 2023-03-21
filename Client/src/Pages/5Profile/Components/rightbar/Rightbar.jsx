@@ -58,14 +58,14 @@ const Rightbar = ({ profile, userProfile , user}) => {
 
                         {userProfile.city &&
                             <div className="rightbarInfoItem">
-                                <span className="rightbarInfoKey">{t("Location:")}</span>
+                                <span className="rightbarInfoKey">{t("Location")}</span>
                                 <span className="rightbarInfoValue">{userProfile.city}</span>
                             </div>
                         }
 
                         {userProfile.career &&
                             <div className="rightbarInfoItem">
-                                <span className="rightbarInfoKey">{t("Title:")}</span>
+                                <span className="rightbarInfoKey">{t("Title")}</span>
                                 <span className="rightbarInfoValue">{userProfile.career}</span>
                             </div>
                         }
