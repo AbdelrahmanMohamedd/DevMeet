@@ -119,9 +119,9 @@ function Profile() {
 
 
                             <div className='TotalLikes'>  
-                                <h5 > Total Likes:</h5>
+                                <h5 > {t("Total Likes")}</h5>
                                 <img className='TotalLikesSymb' src='/images/TotalLikesSymb.png'  alt="Likes" />
-                                <h5>{ userProfile.likes } Likes</h5> 
+                                <h5>{ userProfile.likes } {t("Likes")}</h5> 
                             </div>
                             
                             {/* <div className='BadgesContainer' >
