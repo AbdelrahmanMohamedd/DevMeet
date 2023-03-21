@@ -12,7 +12,6 @@ const [profilePosts, setProfilePosts]=useState()
 let { user } = useAuthContext();
 user = user.user
 Object.freeze(user)
-console.log(profilePosts)
 
 const getMyPosts = () => {
   axios.get(`${process.env.REACT_APP_BACKEND_LINK}/profile/posts/${userProfile._id}`)
@@ -28,7 +27,6 @@ const getMyPosts = () => {
 }
 
 const DeletePost=()=>{
-  console.log("inside home delete post")
   getMyPosts()
     }
 
@@ -56,7 +54,6 @@ const getSharePost = (post) => {
     recipients:reci,
     url: `/post/${post._id}`
   }
-  console.log(user.followers)
 
   axios.post(`${process.env.REACT_APP_BACKEND_LINK}/notification`, {...msg })
     .then((res) => { console.log("notify added succefully") })

@@ -32,8 +32,8 @@ const Homecomponent = ({ socket }) => {
   Object.freeze(user);
   const getNewPosts = () => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_LINK}/posts/${user._id}`)
-      .then((response) => {
+    .get(`${process.env.REACT_APP_BACKEND_LINK}/posts/${user._id}`)
+    .then((response) => {
         return response;
       })
       .then(({ data }) => {
@@ -51,8 +51,8 @@ const Homecomponent = ({ socket }) => {
   };
   const getTrendingPosts = () => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_LINK}/posts/trending/${user._id}`)
-      .then((response) => {
+    .get(`${process.env.REACT_APP_BACKEND_LINK}/posts/trending/${user._id}`)
+    .then((response) => {
         return response;
       })
       .then(({ data }) => {
@@ -230,7 +230,7 @@ useEffect(()=>{
         <>
           <div className="searchDiv"> 
             <div className="SearchNav">
-              <input className="buttonSearch" type="button" value="Found Users" />
+              <input className="buttonSearch" type="button" value={t("Found Users")} />
               {/* <input className="buttonSearch" type="button" value="Posts" />
               <input className="buttonSearch" type="button" value="Communities" /> */}
             </div>
@@ -240,7 +240,7 @@ useEffect(()=>{
               ))} </>}
               { !searchResults && 
                 <div className="noHomePostsyet">
-                  <p>No Matches Found</p> 
+                  <p>{t("No Matches Found")}</p> 
                 </div>
               }
           </div>
@@ -257,14 +257,14 @@ useEffect(()=>{
           {currentPosts && currentPosts.length == 0 &&  
              // if there is no posts in home page
             <div /*style={{ display: isDiv1Visible ? "block" : "none" }} */ className='noHomePostsyet'>
-              <p>You have No posts to view</p>
-              <p>No One Posted for this Tag till now</p>
+              <p>{t("You have No posts to view")}</p>
+              <p>{t("No One Posted for this Tag till now")}</p>
             </div>
           } 
             {currentPosts && currentPosts.length == 0 && user.following.length == 0 && // if there is no posts in home page 
             <div id="div2"/* style={{ display: !isDiv1Visible ? "block" : "none" }} */ className="noHomePostsyet">
-              <p>You have No posts to view</p>
-              <p>Follow other users to show thier posts, also you can share your own posts</p>
+              <p>{t("You have No posts to view")}</p>
+              <p>{t("Follow other users to show thier posts, also you can share your own posts")}</p>
             </div>
           }
         </div>

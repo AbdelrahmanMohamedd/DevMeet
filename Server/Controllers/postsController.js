@@ -16,14 +16,14 @@ const Authorize = (Token, userId) => {
 const createPost = async (req, res) => {
   const { userId, description, picturePath, tags, personal, communityId } =
     req.body;
-  // console.log(tags);
+  console.log(tags);
   const tagsArray = tags.split(",");
   console.log(typeof tags);
   const { file } = req;
-  // console.log(userId);
-  // console.log(description);
+  console.log(userId);
+  console.log(description);
   const user = await User.findById(userId);
-  // console.log(req.files);
+  console.log(req.files);
   //edit to add profilePicture
   const image1 = req.files.image1 ? req.files.image1[0].filename : null;
   //  console.log(img1)
@@ -42,7 +42,7 @@ const createPost = async (req, res) => {
     tags: [...tagsArray],
     personal,
   };
-  // console.log(PostObj);
+  console.log(PostObj);
   const newPost = new Post(PostObj);
   await newPost.save();
   res.status(200).json(newPost);
@@ -59,10 +59,10 @@ const createPost = async (req, res) => {
 const updatePost = async (req, res) => {
   const { id } = req.params;
   const { userId, desc } = req.body;
-  // console.log(desc);
+  console.log(desc);
   try {
     const post = await Post.findById(id);
-    // console.log(post);
+    console.log(post);
     if (post.userId == userId) {
       console.log("true");
       post.description = desc;
@@ -113,11 +113,11 @@ const likePost = async (req, res) => {
   try {
     const { id } = req.params;
     const { userId } = req.body;
-    // console.log(id)
+    console.log(id)
     const post = await Post.findById(id);
     const Poster = await User.findById(post.userId)
     const isLiked = post.likes.get(userId);
-    // console.log(isLiked)
+    console.log(isLiked)
 //Check if liked
     if (isLiked) {
       post.likes.delete(userId);
@@ -126,8 +126,8 @@ const likePost = async (req, res) => {
       post.likes.set(userId, true)
       Poster.likes++
     }
-    // console.log(post.likes)
-    // console.log(post.likes.size)
+    console.log(post.likes)
+    console.log(post.likes.size)
 //Handout badges
     if(Poster.likes==5){
       Poster.badge5Likes=true;
@@ -141,7 +141,7 @@ const likePost = async (req, res) => {
       { likes: post.likes },
       { new: true }
     );
-// console.log(updatedPost.likes.size)
+console.log(updatedPost.likes.size)
     await Poster.save();
 
     res.status(200).json(updatedPost);
@@ -153,7 +153,7 @@ const likePost = async (req, res) => {
 const checkLiked = async (req, res) => {
   const { id,userId} = req.params;
   // const { userId } = req.body;
-  // console.log(id);
+  console.log(id);
   const post = await Post.findById(id);
   const Poster = await User.findById(post.userId);
   const isLiked = post.likes.get(userId);
@@ -215,10 +215,10 @@ const helpfulPost = async (req, res) => {
 const getFollowPosts = async (req, res) => {
   try {
     const { userId } = req.params;
-    // console.log(userId);
+    console.log(userId);
     const currentUserPosts = await Post.find({ userId: userId });
     const user = await User.findById(userId);
-    // console.log(user.following);
+    console.log(user.following);
     const followingPosts = await Post.find({ userId: { $in: user.following } });
 
     res.status(200).json(
@@ -235,23 +235,34 @@ const getFollowPosts = async (req, res) => {
 
 //POST
 const getPostComments = async (req, res) => {
+  try{
   const { postId } = req.params;
   const comment = await Comment.find({ postId: postId }).sort({
     createdAt: -1,
   });
   res.status(200).json(comment);
+}
+catch(err){
+   res.status(404).json({ message: err.message})
+}
 };
 
 const searchPosts = async (req, res) => {
+  try{
   const { desc } = req.body;
   const post = await Post.find({ description: { $regex: desc } }).sort({
     description: 1,
     createdAt: -1,
   });
   res.status(200).json(post);
+}
+catch(err){
+   res.status(404).json({ message: err.message})
+}
 };
 
 const getFollowPostsByTop = async (req, res) => {
+  try{
   console.log("intop");
   const { userId } = req.params;
   const currentUserPosts = await Post.find({ userId: userId });
@@ -279,16 +290,21 @@ const getFollowPostsByTop = async (req, res) => {
     },
   ]);
 
-  // console.log(followingPosts, "******");
+  console.log(followingPosts, "******");
   res.status(200).json(followingPosts); //combine owner posts with following posts
   // .sort((a,b)=>{
   //     return b.createdAt - a.createdAt; //sort by date in descending
   // }
+}
+catch(err){
+   res.status(404).json({ message: err.message})
+}
 };
 
 const getTopPostsbyTags = async (req, res) => {
+  try{
   const { tag } = req.params;
-  // console.log("*****************tags");
+  console.log("*****************tags");
   const trendingPosts = await Post.aggregate([
     {
       $match: { tags: { $in: [tag] } },
@@ -311,8 +327,12 @@ const getTopPostsbyTags = async (req, res) => {
     },
     { $limit: 20 },
   ]);
-  // console.log(trendingPosts);
+  console.log(trendingPosts);
   res.status(200).json(trendingPosts);
+}
+catch(err){
+   res.status(404).json({ message: err.message})
+}
 };
 
 module.exports = {
