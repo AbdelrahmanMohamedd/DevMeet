@@ -26,7 +26,7 @@ const Messanger = () => {
     let [t,i18n]= useTranslation();
 
     useEffect(() => {
-        socket.current = io("ws://localhost:8900")
+        socket.current = io("https://socket-mwfj.onrender.com")
         socket.current.on("getMessage", data => {
             setArrivalMessage({
                 sender: data.senderId,

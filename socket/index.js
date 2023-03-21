@@ -1,4 +1,4 @@
-const io = require("socket.io")(8900,{
+const io = require("socket.io")("https://socket-mwfj.onrender.com",{
 cors:{
  origin:"http://localhost:3000"
 }
@@ -20,7 +20,7 @@ return users.find(user=>user.userId === userId)
 }
 
 io.on("connection", (socket) => {
-console.log(`user ${socket.id} connected FROM PORT 8900`)
+console.log(`user ${socket.id} connected FROM PORT >> Render`)
 //after every connection take user and socket id
 io.emit("welcome", "hello this is socket server")
 socket.on("addUser", userId=>{
