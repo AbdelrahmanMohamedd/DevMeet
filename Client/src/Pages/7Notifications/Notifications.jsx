@@ -42,7 +42,7 @@
 //   useEffect(() => {
 //     console.log("notification mounting");
 //     axios
-//       .get(`https://devmeet-23-d82k.onrender.com/notifications`, {
+//       .get(`${process.env.REACT_APP_BACKEND_LINK}/notifications`, {
 //         params: { id: userId },
 //       })
 //       .then((res) => {
@@ -58,7 +58,7 @@
 //         <div className="wrapper">
 //           <img
 //             className="UserImage"
-//             src={`https://devmeet-23-d82k.onrender.com/images/${e.user.profilePicture}`}
+//             src={`${process.env.REACT_APP_BACKEND_LINK}/images/${e.user.profilePicture}`}
 //             alt="User image"
 //           />
 //           <div className="NotificationContent">
@@ -70,7 +70,7 @@
 //           <span className="Icon">
 //             <img
 //               className="UserImage"
-//               src={`https://devmeet-23-d82k.onrender.com/images/notifyIcon.png`}
+//               src={`${process.env.REACT_APP_BACKEND_LINK}/images/notifyIcon.png`}
 //             />
 //           </span>
 //         </div>
@@ -128,7 +128,7 @@ const Notification = ({ socket }) => {
   useEffect(() => {
     console.log("notification mounting");
     axios
-      .get(`https://devmeet-23-d82k.onrender.com/notifications`, {
+      .get(`${process.env.REACT_APP_BACKEND_LINK}/notifications`, {
         params: { id: userId },
       })
       .then((res) => {
@@ -156,7 +156,7 @@ const Notification = ({ socket }) => {
           <div key={e._id} className="wrapper">
           <img
             className="UserImage"
-            src={`https://devmeet-23-d82k.onrender.com/images/${e.user.profilePicture}`}
+            src={`${process.env.REACT_APP_BACKEND_LINK}/images/${e.user.profilePicture}`}
             alt="User image"
           />
           <div className="NotificationContent">
@@ -168,7 +168,7 @@ const Notification = ({ socket }) => {
           <span className="Icon">
             <img
               className="UserImage"
-              src={`https://devmeet-23-d82k.onrender.com/images/${notifyTypeIcon}`}
+              src={`${process.env.REACT_APP_BACKEND_LINK}/images/${notifyTypeIcon}`}
             />
           </span>
         </div>

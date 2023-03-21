@@ -15,7 +15,7 @@ const ComponentSearch = (commuunityprops) => {
 
 
     var followCommunity= ()=>{
-        axios.post('https://devmeet-23-d82k.onrender.com/communities/requestToJoin', 
+        axios.post(`${process.env.REACT_APP_BACKEND_LINK}/communities/requestToJoin`, 
         {
             communityId:commuunityprops._id , userId:user.id
         }

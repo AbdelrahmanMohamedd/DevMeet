@@ -15,7 +15,7 @@ export default function Sidebar({ getTagPosts }) {
     const filterTag = (event) => {
         const tag = event.target.innerText.replace(/\s/g, '');
         console.log(tag)
-        axios.get(`https://devmeet-23-d82k.onrender.com/posts/tags/${tag}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/posts/tags/${tag}`)
             .then((response) => { return response })
             .then(({ data }) => {
                 getTagPosts(data)
@@ -36,7 +36,7 @@ export default function Sidebar({ getTagPosts }) {
     }, [])
 
     useEffect(() => {
-        axios.get(`https://devmeet-23-d82k.onrender.com/user/top/likes`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/user/top/likes`)
             .then((response) => { return response })
             .then(({ data }) => {
                 setTopUsers(data)

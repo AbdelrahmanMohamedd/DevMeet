@@ -7,7 +7,7 @@ export default function CloseFriend({user}) {
   return (
     <li className="sidebarFriend">
         <NavLink to={{pathname:`/profile`, state:{user: user}}}> 
-          <img className='sidebarFriendImg' src={`https://devmeet-23-d82k.onrender.com/images/${user.profilePicture}`} alt="" />
+          <img className='sidebarFriendImg' src={`${process.env.REACT_APP_BACKEND_LINK}/images/${user.profilePicture}`} alt="" />
           <span className='sidearFriendName'>{user.firstName}</span>
           <span className='sidearFriendName'>{user.lastName}</span>
         </NavLink>  

@@ -49,7 +49,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
     let flaglike;
     await axios
       .patch(
-        `https://devmeet-23-d82k.onrender.com/likes/${post._id}`,
+        `${process.env.REACT_APP_BACKEND_LINK}/likes/${post._id}`,
         { userId },
         { withCredentials: true }
       )
@@ -68,7 +68,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
         
         axios
           .get(
-            `https://devmeet-23-d82k.onrender.com/likeCheck/${post._id}/${ userId }`
+            `${process.env.REACT_APP_BACKEND_LINK}/likeCheck/${post._id}/${ userId }`
             
           )
           .then((res) => {
@@ -95,7 +95,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
         }
 
         axios
-          .post("https://devmeet-23-d82k.onrender.com/notification", { ...msg, flaglike })
+          .post(`${process.env.REACT_APP_BACKEND_LINK}/notification`, { ...msg, flaglike })
           .then((res) => {
             console.log("notify added succefully");
           });
@@ -115,7 +115,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
       formData.append("image1", image);
       formData.append("postId", post._id);
       axios
-        .post(`https://devmeet-23-d82k.onrender.com/comments/${userId}`, formData, {
+        .post(`${process.env.REACT_APP_BACKEND_LINK}/comments/${userId}`, formData, {
           withCredentials: true,
         })
         .then((response) => {
@@ -159,7 +159,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
         console.log("before calling create Comment notification ");
         //send notifcation to database
         axios
-          .post("https://devmeet-23-d82k.onrender.com/notification", { ...msg })
+          .post(`${process.env.REACT_APP_BACKEND_LINK}/notification`, { ...msg })
           .then((res) => {
             console.log("notify added succefully");
           });
@@ -184,7 +184,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
   const commentGet = () => {
     const postId = post._id;
     axios
-      .get(`https://devmeet-23-d82k.onrender.com/posts/comments/${postId}`, {
+      .get(`${process.env.REACT_APP_BACKEND_LINK}/posts/comments/${postId}`, {
         withCredentials: true,
       })
       .then((response) => {
@@ -202,7 +202,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
   const DeleteMyPost = () => {
     const id = post._id;
     axios
-      .delete(`https://devmeet-23-d82k.onrender.com/posts/${id}`, { withCredentials: true })
+      .delete(`${process.env.REACT_APP_BACKEND_LINK}/posts/${id}`, { withCredentials: true })
       .then((response) => {
         return response;
       })
@@ -218,7 +218,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
   useEffect(() => {
     const id = post.userId;
     axios
-      .get(`https://devmeet-23-d82k.onrender.com/user/${id}`, { withCredentials: true })
+      .get(`${process.env.REACT_APP_BACKEND_LINK}/user/${id}`, { withCredentials: true })
       .then((response) => {
         return response;
       })
@@ -239,7 +239,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
               <NavLink to={`/profile`} state={{ user: otherUser }}>
                 <img
                   className="postProfileImg"
-                  src={`https://devmeet-23-d82k.onrender.com/images/${post.userPicturePath}`}
+                  src={`${process.env.REACT_APP_BACKEND_LINK}/images/${post.userPicturePath}`}
                   alt=""
                 />
               </NavLink>
@@ -293,7 +293,7 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
             {post.picturePath && (
               <img
                 className="postImg"
-                src={`https://devmeet-23-d82k.onrender.com/images/${post.picturePath}`}
+                src={`${process.env.REACT_APP_BACKEND_LINK}/images/${post.picturePath}`}
                 alt=""
               />
             )}

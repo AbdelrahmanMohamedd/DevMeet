@@ -1,4 +1,4 @@
-const io = require("socket.io")("https://socket-mwfj.onrender.com",{
+const io = require("socket.io")(`${process.env.SOCKET_API_LINK}`,{
 cors:{
  origin:"http://localhost:3000"
 }

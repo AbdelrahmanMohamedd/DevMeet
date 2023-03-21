@@ -11,7 +11,7 @@ function Message({ message, own, user }) {
     useEffect( ()=>{
          const getReceiver = async () => {
             try {
-        const res = await axios.get("https://devmeet-23-d82k.onrender.com/user/" + message.sender)
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/user/` + message.sender)
                 setReceiver(res.data)
             }
             catch(err){
@@ -29,7 +29,7 @@ function Message({ message, own, user }) {
     return (
         <div className={own ? "message own" : "message"}>
             <div className="messageTop">
-                <img className='messageImg' src={own?`https://devmeet-23-d82k.onrender.com/images/${user?.profilePicture}`:`https://devmeet-23-d82k.onrender.com/images/${receiver?.profilePicture}`} alt="you" />
+                <img className='messageImg' src={own?`${process.env.REACT_APP_BACKEND_LINK}/images/${user?.profilePicture}`:`${process.env.REACT_APP_BACKEND_LINK}/images/${receiver?.profilePicture}`} alt="you" />
                 <p className='messageText'>{message.text}</p>
             </div>
                 <span  className="messageBottom"  > {format(message.createdAt)} </span>

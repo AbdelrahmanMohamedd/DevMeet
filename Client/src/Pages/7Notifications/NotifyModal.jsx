@@ -24,7 +24,7 @@ const NotifyModal = () => {
 
     useEffect(() => {
 
-        axios.get(`https://devmeet-23-d82k.onrender.com/notifications`, {
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/notifications`, {
             params: { id: user }
         }).then(res => {
             setnotify(res.data.notifies)
@@ -45,7 +45,7 @@ const NotifyModal = () => {
         setnotify(data);
         console.log("handleIsRead")
 
-        axios.patch(`https://devmeet-23-d82k.onrender.com/isReadNotification/${msg._id}`).then(res=>{
+        axios.patch(`${process.env.REACT_APP_BACKEND_LINK}/isReadNotification/${msg._id}`).then(res=>{
             console.log("done")
         })
 
@@ -55,7 +55,7 @@ const NotifyModal = () => {
         console.log("handleDeleteAll")
 
     }
-    // var getNotifies = axios.get(`https://devmeet-23-d82k.onrender.com/notifications`, {
+    // var getNotifies = axios.get(`${process.env.REACT_APP_BACKEND_LINK}/notifications`, {
     //     params: { id: user._id }
     // })
 

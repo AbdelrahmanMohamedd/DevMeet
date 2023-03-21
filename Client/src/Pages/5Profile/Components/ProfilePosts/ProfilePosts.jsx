@@ -15,7 +15,7 @@ Object.freeze(user)
 console.log(profilePosts)
 
 const getMyPosts = () => {
-  axios.get(`https://devmeet-23-d82k.onrender.com/profile/posts/${userProfile._id}`)
+  axios.get(`${process.env.REACT_APP_BACKEND_LINK}/profile/posts/${userProfile._id}`)
     .then((response) => { return response })
     .then(({ data }) => {
       for (let i = 0; i < data.length; i++) {
@@ -58,7 +58,7 @@ const getSharePost = (post) => {
   }
   console.log(user.followers)
 
-  axios.post('https://devmeet-23-d82k.onrender.com/notification', {...msg })
+  axios.post(`${process.env.REACT_APP_BACKEND_LINK}/notification`, {...msg })
     .then((res) => { console.log("notify added succefully") })
 
 

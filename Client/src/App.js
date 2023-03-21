@@ -34,7 +34,7 @@ function App() {
   const [socket, setSocket] = useState();
 
   useEffect(() => {
-    setSocket(io.connect("https://devmeet-23-d82k.onrender.com"));
+    setSocket(io.connect(`${process.env.REACT_APP_BACKEND_LINK}`));
     console.log(socket);
   }, []);
 

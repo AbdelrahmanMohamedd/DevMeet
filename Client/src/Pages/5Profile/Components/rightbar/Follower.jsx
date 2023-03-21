@@ -7,7 +7,7 @@ const Follower = ({follower}) => {
     return (
         <div className="rightbarFollowing" >
             <NavLink to={`/profile`} state={{ user: follower }}>
-                <img  src={`https://devmeet-23-d82k.onrender.com/images/${follower.profilePicture}`} className="rightbarFollowingImg" />
+                <img  src={`${process.env.REACT_APP_BACKEND_LINK}/images/${follower.profilePicture}`} className="rightbarFollowingImg" />
             </NavLink>
             <h6 style={{lineHeight: '1'}} >{follower.firstName+" "}</h6>
             <h6 style={{lineHeight: '0.2'}} >{follower.lastName+" "}</h6>

@@ -48,7 +48,7 @@ function Profile() {
 
     const AddConversation = () => {
         console.log(user)
-        axios.post("https://devmeet-23-d82k.onrender.com/api/conversations/", {
+        axios.post(`${process.env.REACT_APP_BACKEND_LINK}/api/conversations/`, {
             receiverId: userProfile._id,
             senderId: user.user._id,
         }).
@@ -83,7 +83,7 @@ function Profile() {
     const handleFollow = () => {
         console.log(user.user._id)
         const id = user.user._id
-        axios.patch(`https://devmeet-23-d82k.onrender.com/user/${id}/${userProfile._id}`, { withCredentials: true, })
+        axios.patch(`${process.env.REACT_APP_BACKEND_LINK}/user/${id}/${userProfile._id}`, { withCredentials: true, })
             .then((response) => {
                 console.log(response)
                 return response
@@ -106,8 +106,8 @@ function Profile() {
                     <div className="profileRight">
                         <div className="profileMainContainer">
                             <div className="profileCover">
-                                <img className='profileCoverImg' src={`https://devmeet-23-d82k.onrender.com/images/${userProfile.coverPicture}`} alt="" />
-                                <img className='profileUserImg' src={`https://devmeet-23-d82k.onrender.com/images/${userProfile.profilePicture}`} alt="" />
+                                <img className='profileCoverImg' src={`${process.env.REACT_APP_BACKEND_LINK}/images/${userProfile.coverPicture}`} alt="" />
+                                <img className='profileUserImg' src={`${process.env.REACT_APP_BACKEND_LINK}/images/${userProfile.profilePicture}`} alt="" />
                             </div>
 
 

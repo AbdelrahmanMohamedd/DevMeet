@@ -29,7 +29,7 @@ let [t,i18n]= useTranslation();
         e.preventDefault()
         console.log("inside login")
         setError(null) 
-        const res = await fetch('https://devmeet-23-d82k.onrender.com/login', {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_LINK}/login`, {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },

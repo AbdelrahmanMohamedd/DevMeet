@@ -18,7 +18,7 @@ const NavBar = ({ sendSearch }) => {
     let userInfo = user.user;
     const LogOut = () => {
         //need to use withCredentials to send cookies to server 
-        axios.get('https://devmeet-23-d82k.onrender.com/logout', {
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/logout`, {
             withCredentials: true
         }).then((response) => { return response })
             .then(() => {

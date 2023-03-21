@@ -15,14 +15,14 @@ const Rightbar = ({ profile, userProfile , user}) => {
     let [t,i18n]= useTranslation();
 
     useEffect(() => {
-        axios.get(`https://devmeet-23-d82k.onrender.com/user/followers/${userProfile._id}`, { withCredentials: true })
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/user/followers/${userProfile._id}`, { withCredentials: true })
             .then((response) => { return response })
             .then(({ data }) => { 
                 setFollowers(data);
             })
             .catch((err) => { console.log(err) })
 
-        axios.get(`https://devmeet-23-d82k.onrender.com/user/following/${userProfile._id}`, { withCredentials: true })
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/user/following/${userProfile._id}`, { withCredentials: true })
             .then((response) => { return response })
             .then(({ data }) => { 
                 setFollowings(data);

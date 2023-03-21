@@ -23,7 +23,7 @@ const Search = ({ firstName, lastName, userPicturePath, user }) => {
                                     <td>
                                         <div className="widget-26-job-emp-img">
                                             <NavLink to={`/profile`} state={{ user: user }}>
-                                                <img src={`https://devmeet-23-d82k.onrender.com/images/${userPicturePath}`} />
+                                                <img src={`${process.env.REACT_APP_BACKEND_LINK}/images/${userPicturePath}`} />
                                             </NavLink>
                                         </div>
                                     </td>
