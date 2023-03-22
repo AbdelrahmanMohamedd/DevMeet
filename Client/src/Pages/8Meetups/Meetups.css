@@ -33,24 +33,24 @@
   /* justify-self: center; */
 }
 
-.jRoom {
-  background-color: #f2ebff;
+ .jRoom {
+  /* background-color: #f2ebff;
   box-shadow: 0 0 5px 2px purple;
   width: 70%;
   height: 50%;
   /* justify-self: center;  */
-  margin-top: 20vh;
+  /* margin-top: 20vh;
   text-align: center;
-  /* justify-self: center; */
-}
+  justify-self: center; */ 
+} 
 
 .joinbutton {
   background-color: purple;
   color: #fff;
-  width: 30%;
+  width: 20%;
   height: 70px;
   border-radius: 10px;
-  /* margin-top: 5px; */
+  margin-top: 5px;
 }
 
 .my_form-control {
@@ -75,12 +75,22 @@
 }
 
 .mycenterdiv {
-  margin-top: 15vh;
+  background-color: #f2ebff;
+  box-shadow: 0 0 5px 2px purple;
+  width: 100%;
+  height: 50%;
+  /* justify-self: center;  */
+  margin-top: 20vh;
+  text-align: center;
 }
 
 .mymargin {
   margin-top: 20px;
 
+}
+
+.TobuserBoxCont{
+  margin-right: 30px;
 }
 
 .topusersize {
@@ -111,4 +121,41 @@
 .joinbutton:hover{
   font-weight: bold;
   background-color: rgb(161, 0, 161);
+}
+@media screen and (max-width:700px){
+  .joinbutton {
+  font-size: 10px;
+  width: 70px;
+  height: 40px;
+  }
+  .joinbutton2 {
+    font-size: 10px;
+    width: 50px;
+    height: 30px;
+    }
+    .mycenterdiv {
+   width: 300px;
+   height: 300px;
+   margin-left: 15px;
+     
+  }
+
+  .meetupsMainbox{
+    display: flex; 
+  }
+
+  .zoomBox{
+    order: 1; 
+  }
+  .zoomBox .my_form-control {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .TobuserBox{
+    order: 2; 
+  } 
+  .TobuserBoxCont{
+    margin-left: 0px;
+  }
 }

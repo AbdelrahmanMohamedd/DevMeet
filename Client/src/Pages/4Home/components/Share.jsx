@@ -110,9 +110,10 @@ const Share = ({ user, sendNewPost, personalCheck }) => {
                 </Select>
               </FormControl>
             </div>
+          <div>
+          <Button variant="contained" style={{ backgroundColor: 'purple' }}   onClick={makePost} size="small">{t("Share")}</Button>
           </div>
-
-          <Button variant="contained" style={{ backgroundColor: 'purple' }} onClick={makePost} size="small">{t("Share")}</Button>
+          </div>
         </div>
       </div>
     </div>

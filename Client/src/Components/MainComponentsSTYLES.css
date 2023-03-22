@@ -32,3 +32,6 @@
 .searchInput:focus ~ .focus-bg{transition: 0.5s; opacity: 1;}
 
 /* //////////////////////////////////////////////////// */
+.bgsize{
+    width: 100%;
+}

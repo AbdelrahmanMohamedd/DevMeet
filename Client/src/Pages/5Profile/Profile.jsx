@@ -39,22 +39,22 @@ function Profile() {
 
     const checkFollowing = async (user, userProfile) => {
         console.log('entered check following')
-    try {
-    const response = await axios.get(`http://localhost:7400/user/${user.user._id}`);
-    const data = response.data;
-    console.log(data);
-    setUpdatedUser(data);
-    if (user?.user_id !== userProfile?._id && updatedUser?.following.includes(userProfile._id)) {
-      console.log('true');
-      setIsFollowing(true);
-    } else {
-      setIsFollowing(false);
-    }
-  } catch (err) {
-    console.log(err);
-  }
-
-    }
+        try {
+        const response = await axios.get(`http://localhost:7400/user/${user.user._id}`);
+        const data = response.data;
+        console.log(data);
+        setUpdatedUser(data);
+        if (user?.user_id !== userProfile?._id && updatedUser?.following.includes(userProfile._id)) {
+            console.log('true');
+            setIsFollowing(true);
+        } else {
+            setIsFollowing(false);
+        }
+        } catch (err) {
+        console.log(err);
+        }
+    
+        }
 
 
     const AddConversation = () => {
@@ -96,6 +96,7 @@ function Profile() {
                 return response
             })
             .then(({ data }) => {
+                setUserProfile({ ...userProfile, following: data })
                 console.log("followed")
                 setIsFollowing(!isFollowing)
                 setUserProfile({ ...userProfile})
@@ -116,51 +117,49 @@ function Profile() {
                                 <img className='profileCoverImg' src={`${process.env.REACT_APP_BACKEND_LINK}/images/${userProfile.coverPicture}`} alt="" />
                                 <img className='profileUserImg' src={`${process.env.REACT_APP_BACKEND_LINK}/images/${userProfile.profilePicture}`} alt="" />
                             </div>
-
+                            <div className="profileInfo">
+                                <h4 className='profileInfoName mb-'>{userProfile.firstName + " " + userProfile.lastName}</h4>
+                                {userProfile.desc && <span className='profileInfoDesc'>{userProfile.desc}</span>}
+                            </div>
+                            <div className='myclassNew'>
 
                             <div className='TotalLikes'>  
-                                <h5 > {t("Total Likes")}</h5>
+                                <h5 > Total Likes:</h5>
                                 <img className='TotalLikesSymb' src='/images/TotalLikesSymb.png'  alt="Likes" />
-                                <h5>{ userProfile.likes } {t("Likes")}</h5> 
+                                <h5>{ userProfile.likes } Likes</h5> 
                             </div>
-                            
+                            {user.user._id == userProfile._id &&
+                                <Button style={{ backgroundColor: 'purple', translate: '-120%' }} variant="contained" id="UpdateProfile" onClick={handleProfile}>{t("Update Profile")}</Button>
+                            }
                             {/* <div className='BadgesContainer' >
                                 <p>Badges</p>
                             </div> */}
-
-
+                            </div>
+                            <div className='d-flex justify-content-end'>
+   
                             {user.user._id != userProfile._id && 
                                 <NavLink to={`/messenger`} state={{ user: user }}>
-                                    <Button style={{ backgroundColor: 'purple', translate: '-120%' }} variant="contained" id="UpdateProfile" onClick={AddConversation} > 
+                                    <Button className='me-3' style={{ backgroundColor: 'purple'}} variant="contained" id="UpdateProfile" onClick={AddConversation} > 
                                         {t("Message")} 
                                     </Button>
                                 </NavLink>
                             }
-
-
-
-                            {user.user._id == userProfile._id &&
-                                <Button style={{ backgroundColor: 'purple', translate: '-120%' }} variant="contained" id="UpdateProfile" onClick={handleProfile}>{t("Update Profile")}</Button>
-                            }
+                           <div className="me-5">
                             {user.user._id != userProfile._id && <Button style={{ backgroundColor: 'purple' }}
                                 variant="contained" color="primary"
                                 id="UpdateProfile" onClick={handleFollow}>{isFollowing ? <span style={{ color: 'gray' }}>{t("Following")}</span> : <span>{t("Follow")}</span>}</Button>
-                            }
+                            }</div></div>
                             {/* {user.user._id!=userProfile._id && <Button 
                                 variant="contained" 
                                 color="primary" 
                                 id="UpdateProfile2" onClick={handleFollow}>Follow</Button>
                                 }            */}
-
-                            <div className="profileInfo">
-                                <h4 className='profileInfoName'>{userProfile.firstName + " " + userProfile.lastName}</h4>
-                                {userProfile.desc && <span className='profileInfoDesc'>{userProfile.desc}</span>}
-                            </div>
                         </div>
 
                         <div className="profilerightBottom">
-                            <ProfilePosts userProfile={userProfile} />
-                            <Rightbar profile userProfile={userProfile}  user={user}/>
+                        <Rightbar className="Rightbardiv" profile userProfile={userProfile}  user={user}/>
+                            <ProfilePosts className="ProfilePosts" userProfile={userProfile} />
+                            
                         </div>
                     </div>
                 </div>}

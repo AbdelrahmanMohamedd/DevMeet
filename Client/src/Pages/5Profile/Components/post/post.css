@@ -1,8 +1,8 @@
 .post {
     width: 100%;
     border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 16px -8px rgba(0,0,0,0.68); 
-    box-shadow: 0px 0px 16px -8px rgba(0,0,0,0.68);
+    -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
     margin: 30px 0;
 }
 
@@ -20,6 +20,11 @@
     display: flex;
     align-items: center;
 }
+.postTopRight {
+    display: flex;
+    align-items: center;
+}
+
 
 .postProfileImg {
     width: 32px;
@@ -59,7 +64,6 @@
 
 .postBottomLeft {
     display: flex;
-    /* align-items: center; */
     cursor: pointer;
 }
 
@@ -80,6 +84,34 @@
     font-size: 15px;
 }
 
+.commentsDiv {
+    margin: 2px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    /* Light grey */
+    border-top: 16px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 
 .TagsCorner{
@@ -87,4 +119,15 @@
     font-size: 15px;
     font-weight: 700;
     font-family:'Consolas';
+}
+
+@media only screen and (max-width: 700px) {
+.postDate {
+    font-size: 1px;
+    color: #3498db;
+}
+.TagsCorner{
+    font-size: 1px;
+    color: #3498db;
+}
 }

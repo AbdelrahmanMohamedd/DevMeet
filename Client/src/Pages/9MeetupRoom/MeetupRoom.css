@@ -1,5 +1,5 @@
  .room-page-parent {
-    margin-top: 3%;
+     margin-top: 3%;
      display: flex;
      justify-content: center;
      width: 100vw;
@@ -14,15 +14,49 @@
  }
 
  .inviteDiv {
-     background-color: #f2ebff;
-     border-radius: 15px 50px 30px 5px;
-     height: 20vh;
-     width: 10vw;
-     border: 1px purple solid;
+     width: 15%;
+     height: 25%; 
+     margin: 50px;
+     padding :20px;
+     margin-top :100px;
      text-align: center;
+     border-radius: 15px  ;
+     background-color: #f2ebff;
+     border: 2px purple solid;
+     box-shadow:   10px 10px 5px purple;
  }
 
  .buttonId {
-     background-color: purple;
      color: white;
+     padding: 5px;
+     padding-left: 25px;
+     padding-right: 25px;
+     border-radius: 5px;
+     background-color: purple;
+ }
+
+ .buttonId:hover{
+    font-weight: bold;
+    background-color: rgb(161, 92, 161);
+ } 
+
+ .buttonId:active{
+    font-weight: bold;
+    background-color: rgb(175, 118, 175);
+ } 
+
+ .inviteDiv h5{
+    font-weight: 700;
+    font-family: 'raleway';
+ }
+ .inviteDiv h6{
+    font-weight: 600;
+    font-family: 'raleway'; 
+ }
+
+ .toclipboard{
+    color:green;
+    padding-top: 50px;
+    font-size: 20px;
+    font-weight: bolder;
  }

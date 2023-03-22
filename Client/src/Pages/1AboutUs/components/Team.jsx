@@ -16,8 +16,8 @@ let Team = (props) => {
                   <div className="thumbnail"> 
                     <img src="images/TeamMembers/Omar.jfif" alt="." className="team-img" style={{height:'250px' , width:'auto'}}/>
                     <div className="caption">
-                      <h4 className="font-h4" >Omar Khaled</h4>
-                      <p className="parag" >MEARN stack Developer</p>
+                      <h4 className="font-h4" >{t("Omar Khaled")}</h4>
+                      <p className="parag" >{t("MEARN stack Developer")}</p>
                     </div>
                   </div>
                 </div>
@@ -25,8 +25,8 @@ let Team = (props) => {
                   <div className="thumbnail"> 
                     <img src="images/TeamMembers/Basmala.jfif" alt="." className="team-img" style={{height:'250px' , width:'auto'}}/>
                     <div className="caption">
-                      <h4 className="font-h4" >Basmala Mamdouh</h4>
-                      <p className="parag" >MEARN stack Developer</p>
+                      <h4 className="font-h4" >{t("Basmala Mamdouh")}</h4>
+                      <p className="parag" >{t("MEARN stack Developer")}</p>
                     </div>
                   </div>
                 </div>
@@ -34,8 +34,8 @@ let Team = (props) => {
                   <div className="thumbnail"> 
                     <img src="images/TeamMembers/Abdelrahman.PNG" alt="." className="team-img" style={{height:'250px' , width:'auto'}}/>
                     <div className="caption">
-                      <h4 className="font-h4" >Abdelrahman Mohamed</h4>
-                      <p className="parag" >MEARN stack Developer</p>
+                      <h4 className="font-h4" >{t("Abdelrahman Mohamed")}</h4>
+                      <p className="parag" >{t("MEARN stack Developer")}</p>
                     </div>
                   </div>
                 </div>
@@ -43,8 +43,8 @@ let Team = (props) => {
                   <div className="thumbnail"> 
                     <img src="images/TeamMembers/Eman.jpeg" alt="." className="team-img" style={{height:'250px' , width:'auto'}}/>
                     <div className="caption">
-                      <h4 className="font-h4" >Eman Mohamed</h4>
-                      <p className="parag" >MEARN stack Developer</p>
+                      <h4 className="font-h4" >{t("Eman Mohamed")}</h4>
+                      <p className="parag" >{t("MEARN stack Developer")}</p>
                     </div>
                   </div>
                 </div>
@@ -52,8 +52,8 @@ let Team = (props) => {
                   <div className="thumbnail"> 
                     <img src="images/TeamMembers/Taha.jpeg" alt="." className="team-img" style={{height:'250px' , width:'auto'}}/>
                     <div className="caption">
-                      <h4 className="font-h4" >Mohamed Taha</h4>
-                      <p className="parag" >MEARN stack Developer</p>
+                      <h4 className="font-h4" >{t("Mohamed Taha")}</h4>
+                      <p className="parag" >{t("MEARN stack Developer")}</p>
                     </div>
                   </div>
                 </div>

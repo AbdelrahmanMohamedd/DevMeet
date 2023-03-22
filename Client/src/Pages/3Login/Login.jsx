@@ -13,7 +13,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useAuthContext } from "../../hooks/useAuthContext";
 import axios from "axios";
 
-
+import "./login.css"
 
 
 const Login = () => {
@@ -71,10 +71,10 @@ let [t,i18n]= useTranslation();
             <PlainNav></PlainNav>
             <Grid container component="main" sx={{ height: '100vh' }} >
                 <Grid item xs={false} sm={2} md={7} sx={{ backgroundImage: `url(${'/assets/PurpleImg.jpg'})`, backgroundSize: 'cover' }}>
-                    <Typography variant="h2" style={{ position: 'absolute', color: 'whitesmoke', top: '30%', left: '40%', transform: 'translate(-70%, -20%)', fontWeight: '900', fontFamily: 'raleway' , width:"50%"  }}>
+                    <Typography variant="h2" className='fontMobile' style={{ position: 'absolute',top: '30%', left: '40%', transform: 'translate(-70%, -20%)', fontWeight: '900', fontFamily: 'raleway' , width:"50%"  }}>
                         {t("Make the most of your professinal life")}
                     </Typography>
-                    <Typography variant="h4" style={{ position: 'absolute', color: 'white', top: '50%', left: '40%', transform: 'translate(-55%, -20%)', fontWeight: '650', fontFamily: 'raleway' }}>
+                    <Typography variant="h4" className='fontMobile2' style={{ position: 'absolute', top: '50%', left: '40%', transform: 'translate(-55%, -20%)', fontWeight: '650', fontFamily: 'raleway' }}>
                         {t("Login and stay connected")}
                     </Typography>
                 </Grid>

@@ -49,7 +49,7 @@
 }
 
 .chatBoxTop { 
-    width: auto;
+    /* width: 100%; */
     overflow-y: scroll; 
     padding-right: 10px;
     height: 430px;
@@ -69,7 +69,7 @@
 }
 
 .chatSubmitButton {
-    width: 15%;
+    width: 100px;
     height: auto;
     padding: 10px;
     margin-left: 20px;
@@ -80,6 +80,7 @@
     color: white;
     font-size: 25px;
     font-weight: 800;
+    /* display: inline; */
 }
 
 .chatSubmitButton:hover{
@@ -131,3 +132,24 @@
 ::-webkit-scrollbar {
     width: 0em;
 }
+@media screen and (max-width:700px){
+    .chatBoxBottom { 
+      flex-wrap: wrap;
+      margin-top: 5px;
+        align-items: center; 
+    }
+    .chatSubmitButton {
+        margin-top: 4px;
+    }
+    .noConversationText {
+font-size: medium;
+    }
+    .aboveUsersTitle{
+        font-size: medium;
+    }
+}
+/* @media screen and (min-width:500px){
+    button{
+      background-color: aqua;
+    }
+} */

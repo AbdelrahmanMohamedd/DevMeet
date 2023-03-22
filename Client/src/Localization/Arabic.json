@@ -63,7 +63,7 @@
   "SEND":"ارسال",
   "write your message...":"...اكتب رسالتك",
   "You have No posts to view":" لا يوجد منشورات للعرض",
-  "No One Posted for this Tag till now":"ليس هناك منشورات بهذاالشعار",
+  "No One Posted for this Tag till now":"ليس هناك منشورات بهذا الشعار",
   "Follow other users to show thier posts, also you can share your own posts":"تابع مستخدمين آخرين لترى منشوراتهم، كما يمكنك المشاركة بنشوراتك الخاصة",
   "No Matches Found": "لم يتم العثور على تطابقات",
   "Location":"الموقع",
@@ -142,5 +142,15 @@
   "Events":"الاحداث",
   "event starts":"يبدأ الحدث",
   "Total Likes":"اجمالى الاعجابات" ,
-  "Chat with DevMeet users...":"DevMeet تحدث مع مستخدمين "
+  "Chat with DevMeet users...":"DevMeet تحدث مع مستخدمين ",
+  "Invite Friends":"ادعو أصدقاء",
+  "Meetup ID":"رقم الاجتماع",
+  "Copy Meetup ID":" نسخ رقم الاجتماع",
+  "Meetup ID Copied to Clipboard":" تم نسخ رقم الاجتماع الي الحافظة",
+  "Omar Khaled":"عمر خالد",
+  "Basmala Mamdouh":"بسملة ممدوح",
+  "Abdelrahman Mohamed":"عبدالرحمن محمد",
+  "Eman Mohamed":"ايمان محمد",
+  "Mohamed Taha":"محمد طه",
+  "MEARN stack Developer":"  مطور مواقع ويب"
 }

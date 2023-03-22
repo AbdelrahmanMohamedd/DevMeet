@@ -1,9 +1,8 @@
 import React from 'react'
-import "./ProfileShare.css"
+import "./ProfileShare.css" 
 import { PermMedia, Label, Room, EmojiEmotions } from "@mui/icons-material"
 
-import { useEffect, useState } from 'react';
-// import { Room, EmojiEmotions } from "@mui/icons-material";
+import { useEffect, useState } from 'react'; 
 import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
@@ -106,7 +105,7 @@ const Share = ({ user, sendNewPost, personalCheck }) => {
                     <div className="shareOptions">
                         <div className="shareOption">
                             <LocalOfferIcon htmlColor='blue' />
-                            <FormControl sx={{ width: '250px' }} size="small" >
+                            <FormControl  className=" mt-1 TagMenuuuu" size="small" >
                                 <InputLabel id="demo-multiple-checkbox-label">{t("Tags max:3")}</InputLabel>
                                 <Select labelId="demo-multiple-checkbox-label" id="demo-multiple-checkbox" multiple value={TagName} onChange={handleChange} input={<OutlinedInput label="Tag" />} renderValue={(selected) => selected.join(', ')} MenuProps={MenuProps} >
                                     {Tags.map((tag) => (
@@ -121,7 +120,7 @@ const Share = ({ user, sendNewPost, personalCheck }) => {
                         </div>
                     </div>
 
-                    <Button variant="contained" style={{ backgroundColor: 'purple' }} onClick={makePost} size="small">{t("Share")}</Button>
+                    <Button className=" mt-2" variant="contained" style={{ backgroundColor: 'purple' }} onClick={makePost} size="small">{t("Share")}</Button>
                 </div>
             </div>
         </div>

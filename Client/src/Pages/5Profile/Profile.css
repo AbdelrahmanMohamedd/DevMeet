@@ -48,24 +48,18 @@
 
 .profilerightBottom {
     display: flex;
+    flex-direction: row-reverse;
 }
 
-#UpdateProfile{
-position:absolute;
-left: 90%;
-bottom: 55%;
-}
 
-#UpdateProfile2{
-position:absolute;
-left: 95%;
-bottom: 55%;
-}
+
+
 
 .TotalLikes{
+
     font-weight: 800;
-    position: absolute;
-    margin-left: 30px; 
+    margin-top: 5px;
+    /* position: absolute; */
     translate: 50% -50%;
     display: flex;
     flex-direction: row;
@@ -74,3 +68,40 @@ bottom: 55%;
 .TotalLikesSymb{
     max-height: 30px;
 }
+.myclassNew{
+    display: flex;
+    justify-content: space-between;
+}
+.MessageFollow{
+    display: flex;
+    justify-content: end;
+}
+.messangerbuttonpost{
+ margin-right: 10px;
+ text-decoration: none;
+}
+@media screen and (max-width:700px){
+    .profilerightBottom {
+        display: block;
+    }
+    .profile {
+        display: block;
+    }
+    .Rightbardiv{
+        display: block;
+    }
+    .myclassNew{
+        justify-content: center;
+    }
+    #UpdateProfile{
+        margin-right: 150px; 
+        width: 100px;
+        height: 50px;
+        margin-top: 50px;
+    }
+    .TotalLikes{
+margin-top: 40px;
+margin-left: 53px;
+    }
+        
+  }

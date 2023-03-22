@@ -254,7 +254,7 @@ useEffect(()=>{
             <Post key={p._id} post={p} userId={user._id} sendNewPost={getLikedPost} refreshPosts={DeletePost} socket={socket}/>
           ))}
 
-          {currentPosts && currentPosts.length == 0 &&  
+          {currentPosts && currentPosts.length == 0 &&  user.following.length != 0 &&
              // if there is no posts in home page
             <div /*style={{ display: isDiv1Visible ? "block" : "none" }} */ className='noHomePostsyet'>
               <p>{t("You have No posts to view")}</p>

@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube, faLinkedin, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import './MainComponentsSTYLES.css'
 
 
 const Footer = () => {
@@ -13,7 +14,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer style={{ backgroundColor: '#19052a', color: 'white', padding: '4rem 0' }}>
+        <footer className='bgsize' style={{ backgroundColor: '#19052a', color: 'white', padding: '4rem 0' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                 </div> 

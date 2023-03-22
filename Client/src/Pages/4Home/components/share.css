@@ -90,3 +90,16 @@
         width: 100px;
     }
 }
+
+
+@media screen and  (max-width:700px){
+    .shareBottom{
+        display: flex;
+        flex-direction: column; 
+    }  
+
+    .share{
+        margin-bottom: 20%; 
+        font-size: 80%;
+    }
+}
