@@ -12,7 +12,7 @@ const Meetups = () => {
     const navigate = useNavigate();
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        if(roomcode && typeof roomcode!= 'number'){
+        if(roomcode){
         // alert("your Room id is  "+roomcode)
         navigate(`/meetup/${roomcode}`)
         }
