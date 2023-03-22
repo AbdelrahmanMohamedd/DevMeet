@@ -51,12 +51,12 @@ function App() {
         <Route path="/home" element={  user ? <Home socket={socket} /> : <Navigate to="/login"></Navigate> } ></Route>
         <Route path="/search" element={user ? <Search /> : <Navigate to="/login"></Navigate>} ></Route>
         <Route path="componentSearch" element={<ComponentSearch />}></Route>
-        <Route path="messenger" element={<Messanger />}></Route>
-        <Route path="meetups" element={<Meetups/>}></Route>   
+        <Route path="messenger" element={user?<Messanger />:<Navigate to="/login"></Navigate>}></Route>
+        <Route path="meetups" element={user?<Meetups/>:<Navigate to="/login"></Navigate>}></Route>   
         <Route path="/meetup/:roomId" element={<MeetupRoom/>}></Route> 
-        <Route path="/community/:id" element={<Community />}></Route>
-        <Route path="notifications" element={<Notifications socket={socket} />} ></Route>
-        <Route path="notifications/:userId" element={<Notifications socket={socket} />}></Route>
+        <Route path="/community/:id" element={user?<Community />:<Navigate to="/login"></Navigate>}></Route>
+        <Route path="notifications" element={user ?<Notifications socket={socket} />:<Navigate to="/login"></Navigate>} ></Route>
+        <Route path="notifications/:userId" element={ user? <Notifications socket={socket} />:<Navigate to="/login"></Navigate>}></Route>
         {/* <Route path="notifications/:id" element={<NotifyModal />}></Route> */}
         {/* <Route path="notifications" element={<Notifications/>}></Route> */}
         <Route path="*" element={<Error404></Error404>}></Route>

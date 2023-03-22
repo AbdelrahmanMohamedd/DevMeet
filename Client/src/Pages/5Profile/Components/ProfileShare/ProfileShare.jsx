@@ -88,7 +88,7 @@ const Share = ({ user, sendNewPost, personalCheck }) => {
                 <div className="shareTop">
                 <img className='shareProfileImg' src={`${process.env.REACT_APP_BACKEND_LINK}/images/${user.profilePicture}`} alt="" />
                     {error && <div style={{ color: 'red', fontWeight: 'bolder' }}> {error}</div>}
-                    <input placeholder={placeholder} required id="shareTextbox" className='shareInput' onChange={(e) => { setDescription(e.target.value) }} />
+                    <input placeholder={  t("What's on your mind", {placeholder})}  required id="shareTextbox" className='shareInput' onChange={(e) => { setDescription(e.target.value) }} />
                 </div>
                 <hr className='shareHr' />
                 <div className="shareBottom">

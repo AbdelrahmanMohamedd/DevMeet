@@ -8,15 +8,36 @@
     margin-top: 85px;
     justify-self: center;
 }
+.mainNotificationPage{
+    display:flex;
+    flex-direction: row;
+}
+.parentNotify{
+    display:flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin-left: 10%;
+    float:left;
+    width:130%;
+    margin-top: 100px;
+}
+
 
 .wrapper {
     display: flex;
-    width: 700px;
+    width: 55%;
     padding: 20px;
     margin: 10px;
     border-radius: 20px;
     align-items: center;
     background-color: #c3a9e6;
+}
+
+.leftNotify{
+    float:left;
+    width:30%;
+    margin-top: 5%;
+    margin-left: 50px;
 }
 
 

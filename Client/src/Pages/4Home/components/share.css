@@ -81,3 +81,12 @@
     margin-left: 5px;
     font-weight: bold;
 }
+ .tagsDropDown{
+        width: 250px;
+    }
+
+@media only screen and (max-width: 700px) {
+    .tagsDropDown{
+        width: 100px;
+    }
+}

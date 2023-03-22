@@ -42,7 +42,7 @@
     font-weight: 700; 
     padding: 5px 20px;
     border-radius: 30px;
-    width: 60%; 
+    width: 50%; 
     background-color: #a432b8;
     font-family: "Raleway", sans-serif;
 }
@@ -59,12 +59,20 @@
 
 .leftHomeDiv a { 
     display: block; 
-    margin: 10px;
-    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px; 
     text-decoration: none;
     color: black; 
     font-weight: 800;
     font-family: "Raleway", sans-serif;
+}
+
+@media only screen and (max-width: 700px) {
+.leftHomeDiv a { 
+    display: flex;
+    flex-direction: column;
+}
 }
 
 .leftHomeDiv a:hover {
@@ -103,10 +111,34 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgb(80, 0, 117);
     font-weight: 600;
-}    
+} 
+@media only screen and (max-width: 700px) {
+.filterDiv {
+    grid-row-start: 5;
+    grid-row-end: 8;
+    grid-column-start: 8;
+    grid-column-end: 24;
+}
+.TopRightDiv {
+    visibility: hidden;
+}
+
+.PostsDiv {
+    grid-column-start: 8;
+    grid-column-end: 24;
+}
+
+.shareDiv {
+    grid-column-start: 8;
+    grid-column-end: 24;
+}
+
+}   
 
 .TopRightDiv p {
     text-align: center;
+    font-size:16px;
+    font-weight: 700;
     margin-top: 10px;
 }
 

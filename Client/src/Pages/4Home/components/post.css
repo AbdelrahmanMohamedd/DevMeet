@@ -20,6 +20,11 @@
     display: flex;
     align-items: center;
 }
+.postTopRight {
+    display: flex;
+    align-items: center;
+}
+
 
 .postProfileImg {
     width: 32px;
@@ -80,8 +85,10 @@
 }
 
 .commentsDiv {
-    margin: 10px;
+    margin: 2px;
     margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .loader {
@@ -106,9 +113,21 @@
 }
 
 
+
 .TagsCorner{
     color: rgb(47, 78, 218); 
     font-size: 15px;
     font-weight: 700;
     font-family:'Consolas';
+}
+
+@media only screen and (max-width: 700px) {
+.postDate {
+    font-size: 1px;
+    color: #3498db;
+}
+.TagsCorner{
+    font-size: 1px;
+    color: #3498db;
+}
 }

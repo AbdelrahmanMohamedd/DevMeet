@@ -19,9 +19,10 @@
 }
  
 .sidebarWrapper {
-    padding-left: 15px;
+    padding-left: 5px;
     padding-top: 15px;
     padding-bottom: 15px;
+    box-sizing: border-box;
 }
 
 .sidebarList {
@@ -83,4 +84,14 @@
     padding: 0;
     margin: 0;
     list-style: none; 
+}
+
+@media only screen and (max-width: 700px) {
+.sidebarListItemTextMAIN{
+    font-size: 16px;
+}
+.sidebarListItemText{
+    font-size:12px;
+}
+ 
 }

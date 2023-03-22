@@ -222,9 +222,9 @@ useEffect(()=>{
       </div>
       {flag ? 
         <div className="filterDiv">
-          <lable className={activeButton === 0 ? "tagbuttons " : "activetagbuttons"} style={{ borderRight: "0.5px solid rgb(174, 174, 175)" }} onClick={getNewPosts}>  {t("Recent Posts")}  </lable>
+          <label className={activeButton === 0 ? "tagbuttons " : "activetagbuttons"} style={{ borderRight: "0.5px solid rgb(174, 174, 175)" }} onClick={getNewPosts}>  {t("Recent Posts")}  </label>
           <span>&nbsp;&nbsp;</span>
-          <lable className={activeButton === 1 ? 'tagbuttons ' : 'activetagbuttons'} onClick={getTrendingPosts} >{t("Trending Posts")}</lable>
+          <label className={activeButton === 1 ? 'tagbuttons ' : 'activetagbuttons'} onClick={getTrendingPosts} >{t("Trending Posts")}</label>
         </div> 
         :
         <>
@@ -270,9 +270,6 @@ useEffect(()=>{
         </div>
       }
       <div className="TopRightDiv">
-        <p>{t("Meeting Times")}</p>
-      </div>
-      <div className="BottomRightDiv">
         <p>{t("Communities")}</p>
         {communities?.map((c) => (
           <HomeCommunities key={c._id} community={c}></HomeCommunities>

@@ -298,46 +298,46 @@ const Post = ({ post, userId, sendNewPost, refreshPosts, socket }) => {
               />
             )}
           </div>
-          <div className="postBottom">
-            <div className="postBottomLeft" onClick={likeHandler}>
-              {isLiked ? (
-                <FavoriteIcon
-                  htmlColor="#f25268"
-                  style={{ marginRight: "5px" }}
-                />
-              ) : (
-                <FavoriteBorderIcon
-                  htmlColor="red"
-                  style={{ marginRight: "5px" }}
-                />
-              )}
-              <span className="postLikeCounter" style={{ fontWeight: "bold" }}>
-                {" "}
-                {post.likes.size} {t("Likes")}{" "}
-              </span>
-            </div>
-            <div className="postBottomRight">
-              <IconButton
-                color="primary"
-                component="label"
-                onClick={ToggleShowComments}
-              >
-                {isVisible ? (
-                  <VisibilityIcon htmlColor="#5890FF" />
+            <div className="postBottom">
+              <div className="postBottomLeft" onClick={likeHandler}>
+                {isLiked ? (
+                  <FavoriteIcon
+                    htmlColor="#f25268"
+                    style={{ marginRight: "5px" }}
+                  />
                 ) : (
-                  <VisibilityOffIcon htmlColor="gray" />
+                  <FavoriteBorderIcon
+                    htmlColor="red"
+                    style={{ marginRight: "5px" }}
+                  />
                 )}
-                <span
-                  className="postCommenttext ms-2 "
-                  style={{ fontWeight: "bold", color: "black" }}
-                  onClick={commentGet}
-                >
+                <span className="postLikeCounter" style={{ fontWeight: "bold" }}>
                   {" "}
-                  {commentCount} {t("Comments")}
+                  {post.likes.size} {t("Likes")}{" "}
                 </span>
-              </IconButton>
+              </div>
+              <div className="postBottomRight">
+                <IconButton
+                  color="primary"
+                  component="label"
+                  onClick={ToggleShowComments}
+                >
+                  {isVisible ? (
+                    <VisibilityIcon htmlColor="#5890FF" />
+                  ) : (
+                    <VisibilityOffIcon htmlColor="gray" />
+                  )}
+                  <span
+                    className="postCommenttext ms-2 "
+                    style={{ fontWeight: "bold", color: "black" }}
+                    onClick={commentGet}
+                  >
+                    {" "}
+                    {commentCount} {t("Comments")}
+                  </span>
+                </IconButton>
+              </div>
             </div>
-          </div>
 
           <div className="commentsDiv">
             {error && (

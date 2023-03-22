@@ -61,7 +61,7 @@
   "Save Changes":"حفظ التغيرات",
   "Open a conversation to start a chat...":"...افتح محادثة لبدء الدردشة",
   "SEND":"ارسال",
-  "write your message...":"...اكتب رسالك",
+  "write your message...":"...اكتب رسالتك",
   "You have No posts to view":" لا يوجد منشورات للعرض",
   "No One Posted for this Tag till now":"ليس هناك منشورات بهذاالشعار",
   "Follow other users to show thier posts, also you can share your own posts":"تابع مستخدمين آخرين لترى منشوراتهم، كما يمكنك المشاركة بنشوراتك الخاصة",
@@ -141,5 +141,6 @@
   "join":"الانضمام",
   "Events":"الاحداث",
   "event starts":"يبدأ الحدث",
-  "Total Likes":"اجمالى الاعجابات" 
+  "Total Likes":"اجمالى الاعجابات" ,
+  "Chat with DevMeet users...":"DevMeet تحدث مع مستخدمين "
 }

@@ -140,7 +140,7 @@ const Messanger = () => {
         <div className='messanger'>
             <div className="chatMenu">
                 <div className="chatMenuWrapper">
-                    <h5 className='aboveUsersTitle'> Chat with DevMeet users...</h5>
+                    <h5 className='aboveUsersTitle'> {t("Chat with DevMeet users...")}</h5>
                     {conversations.map(C => (
                         <div onClick={() => doThis(C)} style={{ width: '85%' }} >
                             <Conversation conversation={C} currentUser={user} />
@@ -160,11 +160,11 @@ const Messanger = () => {
                             )}
                         </div>
                         <div className="chatBoxBottom">
-                            <textarea className='chatMessageInput' placeholder='write your message...' onChange={(e) => setNewMessage(e.target.value)} value={newMessage}></textarea>
+                            <textarea className='chatMessageInput' placeholder={t("write your message...")} onChange={(e) => setNewMessage(e.target.value)} value={newMessage}></textarea>
                             <button className='chatSubmitButton' onClick={handleSubmit} >{t("SEND")}</button>
                         </div>
                         </> : <div className='noConversationText' >
-                                <span>{t(" Open a conversation to start a chat...")}</span>
+                                <span>{t("Open a conversation to start a chat...")}</span>
                             </div>
                 }
                 </div>
