@@ -28,7 +28,7 @@ function Profile() {
     useEffect(() => {
         if (state) {
             setUserProfile(state.user)
-            console.log(userProfile._id)
+            console.log(userProfile?._id)
             Object.freeze(user)
         }
         else {
